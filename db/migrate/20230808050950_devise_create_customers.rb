@@ -10,7 +10,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string  :age,                null: false
       t.text    :introduction
       t.boolean :is_deleted,         null: false, default: "false"
-      
+      t.integer :gender,             null: false, default: 0
 
 
       ## Recoverable

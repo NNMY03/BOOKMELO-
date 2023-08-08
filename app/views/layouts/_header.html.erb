@@ -10,19 +10,19 @@
           
         <% if customer_signed_in? %>
           <li>
-            <%= link_to customer_path(current_customer),class: 'nav-link text-light' do %>
+            <%= link_to customers_information_path(current_customer),class: 'nav-link text-light' do %>
               <i class="fas fa-home"></i> マイページ
             <% end %>
           </li>
           
           <li>
-            <%=  link_to customers_path,class: 'nav-link text-light' do %>
+            <%=  link_to posts_path,class: 'nav-link text-light' do %>
               <i class="fas fa-customers"></i> タイムライン
             <% end %>
           </li>
           
           <li>
-            <%=  link_to books_path ,class: 'nav-link text-light' do %>
+            <%=  link_to root_path ,class: 'nav-link text-light' do %>
               <i class="fas fa-book-open"></i> BOOKMELOの楽しみ方
             <% end %>
           </li>
@@ -35,9 +35,9 @@
           
          <% elsif admin_signed_in? %>
           <li>
-            <%= link_to admin_items_path, class: 'nav-link text-light' do %>
+            <!--<= link_to admin_items_path, class: 'nav-link text-light' do %>-->
               通報一覧
-            <% end %>
+            <!--< end %>-->
           </li>
           <li>
             <%=  link_to admin_customers_path, class: 'nav-link text-light' do %>
@@ -45,12 +45,12 @@
             <% end %>
           </li>
           <li>
-            <%=  link_to admin_homes_path, class: 'nav-link text-light' do %>
-              書籍一覧
+            <%=  link_to posts_path, class: 'nav-link text-light' do %>
+              タイムライン
             <% end %>
           </li>
           <li>
-            <%=  link_to admin_genres_path, class: 'nav-link text-light' do %>
+            <%=  link_to root_path, class: 'nav-link text-light' do %>
               BOOKMELOの楽しみ方
             <% end %>
           </li>
@@ -63,13 +63,13 @@
         <% else %>
         
           <li>
-            <%= link_to root_path,class: 'nav-link text-light' do %>
+            <%= link_to posts_path,class: 'nav-link text-light' do %>
               <i class="fas fa-home"></i> タイムライン
             <% end %>
           </li>
           
           <li>
-            <%= link_to home_about_path,class: 'nav-link text-light' do %>
+            <%= link_to root_path,class: 'nav-link text-light' do %>
               <i class="fas fa-link"></i> BOOKMELOの楽しみ
             <% end %>
           </li>
