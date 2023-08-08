@@ -7,7 +7,7 @@ class Public::SessionsController < Devise::SessionsController
  protected
 
    def configure_permitted_parameters
-     devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :name, :age, :gender, :password_confirmation])
    end
 
 
