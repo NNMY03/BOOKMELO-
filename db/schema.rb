@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_08_050955) do
+ActiveRecord::Schema.define(version: 2023_08_08_070949) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,18 @@ ActiveRecord::Schema.define(version: 2023_08_08_050955) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.string "isbn"
+    t.string "publisher"
+    t.string "img_small"
+    t.string "img_big"
+    t.string "rakuten_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -62,6 +74,34 @@ ActiveRecord::Schema.define(version: 2023_08_08_050955) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "book_id", null: false
+    t.date "reading_finish", null: false
+    t.text "comment"
+    t.text "memo"
+    t.string "star"
+    t.string "category", null: false
+    t.boolean "posted_status", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "post_id", null: false
+    t.text "reason", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
