@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 1
+  book_id: 1
+  reading_finish: 2023-08-08
+  comment: MyText
+  memo: MyText
+  star: MyString
+  category: MyString
+  posted_status: false
+
+two:
+  customer_id: 1
+  book_id: 1
+  reading_finish: 2023-08-08
+  comment: MyText
+  memo: MyText
+  star: MyString
+  category: MyString
+  posted_status: false

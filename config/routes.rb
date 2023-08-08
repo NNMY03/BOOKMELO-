@@ -1,23 +1,4 @@
 Rails.application.routes.draw do
-
-  namespace :public do
-    get 'books/new'
-  end
-  namespace :public do
-    get 'posts/index'
-    get 'posts/show'
-    get 'posts/edit'
-    get 'posts/new'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/confirm_withdraw'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/attention'
-  end
 # 管理者用
 # URL /admin/sign_in ...
 devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
@@ -46,7 +27,7 @@ devise_for :customers, skip: [:passwords], controllers: {
       resource :favorites, only: [:create, :destroy]
     end
     # 書籍検索
-    get 'books/search' => "books#serach"
+    resources :books, only:[:new]
 
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
