@@ -1,6 +1,8 @@
 class Public::CustomersController < ApplicationController
   def show
     @customer = current_customer
+
+    @posts = @customer.posts.limit(3).order(" created_at DESC ")
   end
 
   def edit
@@ -32,7 +34,7 @@ class Public::CustomersController < ApplicationController
  private
 
   def customer_params
-    params.require(:customer).permit(:name, :email, :age, :is_deleted, :gender, :introduction)
+    params.require(:customer).permit(:name, :email, :age, :is_deleted, :gender, :introduction, :image)
   end
 
   
