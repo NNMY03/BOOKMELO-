@@ -10,4 +10,8 @@ class Public::PostsController < ApplicationController
 
   def new
   end
+  
+  def favorites
+  end
+  
 end

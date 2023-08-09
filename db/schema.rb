@@ -82,15 +82,15 @@ ActiveRecord::Schema.define(version: 2023_08_08_070949) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "book_id", null: false
+    t.integer "user_id"
+    t.integer "book_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "posts", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.integer "book_id", null: false
+    t.integer "book_id"
     t.date "reading_finish", null: false
     t.text "comment"
     t.text "memo"

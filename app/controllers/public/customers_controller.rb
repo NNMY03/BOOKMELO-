@@ -1,8 +1,10 @@
 class Public::CustomersController < ApplicationController
+  before_action :set_post, only: [:show]
+
   def show
     @customer = current_customer
 
-    @posts = @customer.posts.limit(3).order(" created_at DESC ")
+    @posts_latest3 = @post.first(3)
   end
 
   def edit
@@ -32,6 +34,11 @@ class Public::CustomersController < ApplicationController
   end
   
  private
+
+# ユーザー投稿データを取得
+def set_post
+  @post = Post.find(params[:post_id]) 
+end
 
   def customer_params
     params.require(:customer).permit(:name, :email, :age, :is_deleted, :gender, :introduction, :image)

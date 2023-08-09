@@ -1,0 +1,12 @@
+<div>
+  <div>
+    <h1>記録する書籍を検索してください</h1>
+    
+      <div class="search-form">
+        <%= form_with url: new_book_path, method: :get, local: true do |search| %>
+        <%= f.text_field :keyword, class: "form-control"%>
+        <%= %>
+        
+      </div>
+  </div>
+</div>

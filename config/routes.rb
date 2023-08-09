@@ -31,10 +31,11 @@ devise_for :customers, skip: [:passwords], controllers: {
     patch "customers/withdraw"         => "customers#withdraw"
     # 投稿
     resources :posts, only: [:index, :show, :edit, :new] do
+      get :favorites, on: :collection
       resource :favorites, only: [:create, :destroy]
     end
     # 書籍検索
-    resources :books, only:[:new]
+    get 'books/search', to: "books#search"
     
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

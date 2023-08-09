@@ -18,34 +18,49 @@
             <%= link_to "記録する", new_book_path, class:"btn btn-primary"%>
             
             <table class="table table_bordered table-hover table-sm">
-  <thead>
-    <tr>
-      <th>読了数</th>
-      <th>お気に入り数</th>
-      <th>コメント数</th>
-      <th>メモ数</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= link_to "#{@customer.posts.count}", posts_path(current_customer) %></td>
-      <td><%= link_to "#{@customer.posts.favorites.count}", posts_path(current_customer) %></td>
-      <td><%= link_to "#{@customer.posts.comment.count}", posts_path(current_customer) %></td>
-      <td><%= link_to "#{@customer.posts.memo.count}", posts_path(current_customer) %></td>
-    </tr>
-  </tbody>
-</table>
-
-
-<h3>最近の読書</h3>
-<% if @customer.posts.count == 0 %>
- <p>まだ投稿がありません</p>
- <% else %>
-  <%= @posts.each.with_index(1) do |book, i| %>
-        .numbers 
-          = i 
-        .books
-          =link_to book.title, book, class: "titles"
-
+              <thead>
+                <tr>
+                  <th>読了数</th>
+                  <th>お気に入り数</th>
+                  <th>コメント数</th>
+                  <th>メモ数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%= form_with model: @customer do |customer| %>
+                <tr>
+                  <td><%= link_to "#{customer.posts.count}", posts_path(current_customer) %></td>
+                  <td><%= link_to "#{customer.posts.favorites.count}", favorites_posts(current_customer) %></td>
+                  <td><%= link_to "#{customer.posts.comment.count}", posts_path(current_customer) %></td>
+                  <td><%= link_to "#{customer.posts.memo.count}", posts_path(current_customer) %></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+            
+      <h3>最近の読書</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>book</th>
+              <th>Title</th>
+              <th>著者</th>
+              <th>読了日</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <% if @customer.posts.count == 0 %>
+             <td>まだ投稿がありません</td>
+            <% else %>
+            <% @posts_latest3.each do |posts| %>
+              <td><%= link_to "#{posts.book_id}", post_path %></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
