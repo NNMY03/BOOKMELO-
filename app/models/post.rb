@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   
   belongs_to :customer
-  belongs_to :book, primary_key: "isbn"
+  belongs_to :book
   
 # お気に入り機能アソシエーション
   has_many :favorites, dependent: :destroy
