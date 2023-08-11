@@ -1,0 +1,24 @@
+<div class="col-12">
+  <%= form_with model: post, local:true do |post| %>
+    <div class="form-group">
+    <%= post.label "読了日"%>
+    <%= post.date_field :reading_finish %>
+  </div>
+  <!--<div class="form-group">-->
+  <!--  <= post.label "レビュー" %>-->
+  <!--  <= post.text_area :body, class: 'form-control book_body' %>-->
+  <!--</div>-->
+  <div class="form-group">
+  <%= post.label "感情カテゴリー" %>
+  <%= post.text_field :category, class: 'form-control book_category' %>  
+  </div>
+  <div class="form-group">
+  <%= post.label "コメント" %>
+  <%= post.text_field :category, class: 'form-control book_category' %>  
+  </div>
+  <div class="form-group">
+  <%= post.label "メモ" %>
+  <%= post.text_field :category, class: 'form-control book_category' %>  
+  </div>
+  <% end %>
+</div>
