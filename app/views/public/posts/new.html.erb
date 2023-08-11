@@ -17,7 +17,7 @@
                <p>出版社：<%= book.publisher %></p></br>
                <p>あらすじ：</p></br><p><%= book.item_caption %></p>
             </td>
-            <td><%= link_to '記録する', new_book_posts_path, class: "btn btn-sm btn-success" %></td>
+            <td><%= link_to '記録する', post_path, class: "btn btn-sm btn-success" %></td>
          </tr>
                <% end %>
       <% end %>

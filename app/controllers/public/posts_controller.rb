@@ -11,6 +11,9 @@ class Public::PostsController < ApplicationController
   end
 
   def show
+    @post = Post.new
+    @book = Book.find(params[:id])
+
   end
 
   def edit
