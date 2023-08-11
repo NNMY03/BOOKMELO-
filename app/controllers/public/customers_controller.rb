@@ -3,6 +3,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = current_customer
+    @post = Post.all
 
     @posts_latest3 = @post.first(3)
   end
@@ -37,11 +38,11 @@ class Public::CustomersController < ApplicationController
 
 # ユーザー投稿データを取得
 def set_post
-  @post = Post.find(params[:post_id]) 
+  @post = current_customer.posts.all
 end
 
   def customer_params
-    params.require(:customer).permit(:name, :email, :age, :is_deleted, :gender, :introduction, :image)
+    params.require(:customer).permit(:name, :email, :age, :is_deleted, :gender, :introduction, :image, :comment, :memo)
   end
 
   

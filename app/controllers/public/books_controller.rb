@@ -46,7 +46,7 @@ class Public::BooksController < ApplicationController
     author = result["author"]
     isbn = result["isbn"]
     publisher = result["publisherName"]
-    img_small = result["smallImageUrl"]
+    img_small = result["mediumImageUrl"]
     img_big = result["largeImageUrl"]
     rakuten_url = result["itemUrl"]
     item_caption = result["itemCaption"]
