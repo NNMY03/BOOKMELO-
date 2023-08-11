@@ -1,12 +1,36 @@
-<div>
-  <div>
-    <h1>記録する書籍を検索してください</h1>
-    
-      <div class="search-form">
-        <%= form_with url: new_book_path, method: :get, local: true do |search| %>
-        <%= f.text_field :keyword, class: "form-control"%>
-        <%= %>
-        
+<div class="container">
+  
+  <div class="row">
+    <div class="col-12">
+      <h3>記録する書籍を検索してください</h3>
+        <div class="search-form">
+          <%= form_with url: books_search_path, method: :get, local: true do |search| %>
+          <!--<= search.select :range, options_for_select([['タイトル','title'],['作者',''],['出版社','']]) %>-->
+          <%= search.text_field :title, class: "form-control"%>
+    　　    <%= search.submit "検索", class: "btn-sm btn-light" %>
+    　　          <% end %>
+  　　    </div>
+　  </div>
+  </div>
+    　
+    　<!--検索結果の表示-->
+  <div class="row">
+    <h1>検索結果<%= @book.count%>件</h1>
+      <div class="col-4">
+        <% if @book %>
+          <% @book.each do |book| %>
+          <div><%= image_tag book.img_small %></div>
       </div>
+      <div class="col-5">
+        <h5><%= book.title %></h5></br>
+          <p>著者：<%= book.author %></p></br>
+          <p>出版社：<%= book.publisher %></p></br>
+          <p>あらすじ：</p></br><p><%= book.item_caption %></p>
+      </div>
+      <div class='col-3'>
+         <p><%= link_to '記録する', new_post_path(book), class: "btn btn-sm btn-success" %></p>
+      </div>
+      <% end %>
+      <% end %>
   </div>
 </div>

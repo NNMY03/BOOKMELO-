@@ -1,8 +1,8 @@
 class CreatePosts < ActiveRecord::Migration[6.1]
   def change
     create_table :posts do |t|
-      t.integer :customer_id,   null: false
-      t.integer :book_id
+      t.references :book, null: false
+      t.references :customer, null: false, foreign_key: true
       t.date :reading_finish,   null: false
       t.text :comment
       t.text :memo
@@ -12,5 +12,6 @@ class CreatePosts < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    add_foreign_key :books, column: :book_id , primary_key: :isbn
   end
 end

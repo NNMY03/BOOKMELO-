@@ -17,8 +17,7 @@ class Customer < ApplicationRecord
       image.variant(resize_to_limit: [width, height]).processed
   end
  
- 
-  
+
 # 年齢セレクトボックス
    enum age: {'10代':1, '20代':2, '30代':3, '40代':4, '50代':5, '60代':6, '70代':7, '80代':8 }
    

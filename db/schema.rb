@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2023_08_08_070949) do
     t.string "img_small"
     t.string "img_big"
     t.string "rakuten_url"
+    t.string "item_caption"
+    t.string "book_genre_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -89,8 +91,8 @@ ActiveRecord::Schema.define(version: 2023_08_08_070949) do
   end
 
   create_table "posts", force: :cascade do |t|
+    t.integer "book_id", null: false
     t.integer "customer_id", null: false
-    t.integer "book_id"
     t.date "reading_finish", null: false
     t.text "comment"
     t.text "memo"
@@ -99,6 +101,8 @@ ActiveRecord::Schema.define(version: 2023_08_08_070949) do
     t.boolean "posted_status", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_posts_on_book_id"
+    t.index ["customer_id"], name: "index_posts_on_customer_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -111,4 +115,6 @@ ActiveRecord::Schema.define(version: 2023_08_08_070949) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "posts", "books"
+  add_foreign_key "posts", "customers"
 end
