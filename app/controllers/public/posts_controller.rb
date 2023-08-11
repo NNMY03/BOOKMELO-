@@ -1,9 +1,5 @@
 class Public::PostsController < ApplicationController
-  def new
-    @post = Post.new
-    @book = Book.find(params[:id])
-  end
-  
+
   def create
   end
   
@@ -11,8 +7,10 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.new
     @book = Book.find(params[:id])
+    @post = Post.new
+    @posts = Post.all
+    
 
   end
 
@@ -28,7 +26,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :comment, :star, :latest, :category)
+    params.require(:post).permit(:title, :body, :comment, :star, :latest, :category, :memo)
   end
 
   

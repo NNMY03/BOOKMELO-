@@ -30,7 +30,7 @@ devise_for :customers, skip: [:passwords], controllers: {
     get   "customers/confirm_withdraw" => "customers#confirm_withdraw"
     patch "customers/withdraw"         => "customers#withdraw"
     # 投稿
-    resources :posts, only: [:index, :show, :edit] do
+    resources :posts, only: [:index, :show, :edit, :create, :destroy, :update] do
       get :favorites, on: :collection
       resource :favorites, only: [:create, :destroy]
     end

@@ -1,24 +1,57 @@
-<div class="container">
-  <div class="row">
-     <table class="table">
+<div class="card-list-container py-5">
+  <div class="row card w-50 mx-auto mt-4 shadow-lg">
+     <table class="col-12 table　table-sm">
        <thead>
          <tr>
-           <th colspan="4"></th>
-           <th colspan="3"></th>
-           <th colspan="5"></th>
+           <th style="width: 20%"></th>
+           <th style="width: 40%"></th>
          </tr>
        </thead>
        <tbody>
          <tr>
           <td><%= image_tag @book.img_big %></td>
             <td><%= @book.title %></br>
-               <p>著者：<%= @book.author %></p></br>
-               <p>出版社：<%= @book.publisher %></p></br>
-               <p>あらすじ：</p></br><p><%= @book.item_caption %></p>
+                著者：<%= @book.author %></br>
+                <div>出版社：<%= @book.publisher %></div></br>
+                <p>あらすじ：</br><%= @book.item_caption %></p>
             </td>
-            <td><%= link_to '記録する', post_path, class: "btn btn-sm btn-success" %></td>
          </tr>
        </tbody>
      </table>
+  </div>
+
+  <div class="row card w-50 mx-auto mt-4 shadow-lg">
+      <div class="col-12">
+         <h2>レビュー</h2>
+           <% if @posts.count == 0 %>
+             <storng><td>まだ投稿がありません</td></storng>
+              <% else %>
+
+<table>
+<% @posts.each do |posts| %>
+  <tbody>
+    <tr>
+      <td>
+        <%= image_tag posts.customer.get_profile_image(100,100) %>
+        <%= posts.customer.name %>
+      </td>
+      <td>
+        <%= posts.comment %>
+      </td>
+      <td>
+        <%= posts.star %>
+        <%= posts.category %>
+      </td>
+      <td>
+        <% if posts.customer == current_customer %>
+        <%= link_to "Destroy", post_path(posts), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger float-end" %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+  <% end %>
+<% end %>
+</table>
+    </div>
   </div>
 </div>
