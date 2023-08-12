@@ -1,12 +1,12 @@
 class ApplicationController < ActionController::Base
 
   # ログインしてない場合
-   before_action :authenticate_customer!, except: [:top]
+  # before_action :authenticate_customer!, except: [:top]
 
   def after_sign_in_path_for(resource)
     case resource
       when Customer
-        customers_information_path # ログイン後に遷移するpathを設定
+        root_path # ログイン後に遷移するpathを設定
     end
   end
 

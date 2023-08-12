@@ -7,37 +7,37 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-          
+
         <% if customer_signed_in? %>
           <li>
-            <%= link_to customers_information_path(current_customer),class: 'nav-link text-light' do %>
+            <%= link_to customer_show_path(current_customer),class: 'nav-link text-light' do %>
               <i class="fas fa-home"></i> マイページ
             <% end %>
           </li>
-          
+
           <li>
             <%=  link_to posts_path,class: 'nav-link text-light' do %>
               <i class="fas fa-customers"></i> タイムライン
             <% end %>
           </li>
-          
+
           <li>
             <%=  link_to root_path ,class: 'nav-link text-light' do %>
               <i class="fas fa-book-open"></i> BOOKMELOの楽しみ方
             <% end %>
           </li>
-          
+
           <li>
             <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>
-          
+
          <% elsif admin_signed_in? %>
           <li>
-            <!--<= link_to admin_items_path, class: 'nav-link text-light' do %>-->
-              通報一覧
-            <!--< end %>-->
+            <%= link_to admin_items_path, class: 'nav-link text-light' do %>
+              感情タグ登録
+            <% end %>
           </li>
           <li>
             <%=  link_to admin_customers_path, class: 'nav-link text-light' do %>
@@ -61,13 +61,13 @@
           </li>
 
         <% else %>
-        
+
           <li>
             <%= link_to posts_path,class: 'nav-link text-light' do %>
               <i class="fas fa-home"></i> タイムライン
             <% end %>
           </li>
-          
+
           <li>
             <%= link_to root_path,class: 'nav-link text-light' do %>
               <i class="fas fa-link"></i> BOOKMELOの楽しみ

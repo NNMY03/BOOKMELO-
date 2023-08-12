@@ -11,11 +11,11 @@
             <th><%= @customer.introduction %></th>
           </tr>
           <tr>
-            <th><%= link_to "編集する", customers_information_edit_path(@customer), class:"btn btn-primary"%></th>
+            <th><%= link_to "編集する",edit_customer_registration_path(@customer), class:"btn btn-primary"%></th>
           </tr>
         </table>
       </div>
-      
+
       <div class="col-8">
         <h3><%= @customer.name %></h3>
           <div><%= link_to "記録する", books_search_path, class:"btn btn-primary"%></div>
@@ -32,14 +32,14 @@
                 <tr>
                   <td><%= link_to "#{@customer.posts.count}", posts_path(current_customer) %></td>
                   <td><%= link_to "#{@customer.posts.count}", favorites_posts_path(current_customer) %></td>
-                  <!--<td><= link_to "#{@post.comment.count}", posts_path(current_customer) %></td>-->
-                  <!--<td><= link_to "#{@post.memo.count}", posts_path(current_customer) %></td>-->
+                  <td><%= link_to "#{@posts.pluck(:comment).compact.count}", posts_path(current_customer) %></td>
+                  <td><%= link_to "#{@posts.pluck(:memo).compact.count}", posts_path(current_customer) %></td>
                 </tr>
               </tbody>
             </table>
       </div>
   </div>
-    
+
   <div class='row-12'>
     <h3>最近の読書</h3>
       <% if @customer.posts.count == 0 %>
