@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Admin::ConfirmationsController < Devise::ConfirmationsController
+  before_action :authenticate_any!
+
   # GET /resource/confirmation/new
   # def new
   #   super

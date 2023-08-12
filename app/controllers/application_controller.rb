@@ -1,7 +1,13 @@
 class ApplicationController < ActionController::Base
 
   # ログインしてない場合
-  # before_action :authenticate_customer!, except: [:top]
+  def authenticate_any!
+    if admin_signed_in?
+      true
+    else
+      authenticate_customer!
+    end
+  end
 
   def after_sign_in_path_for(resource)
     case resource

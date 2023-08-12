@@ -1,18 +1,18 @@
 <div class="container">
-  
+
   <div class="row">
     <div class="col-12">
       <h3>記録する書籍を検索してください</h3>
         <div class="search-form">
           <%= form_with url: books_search_path, method: :get, local: true do |search| %>
-          <!--<= search.select :range, options_for_select([['タイトル','title'],['作者',''],['出版社','']]) %>-->
-          <%= search.text_field :title, placeholder: 'タイトルで検索', class: "form-control"%>
-    　　    <%= search.submit "検索", class: "btn-sm btn-light" %>
-    　　          <% end %>
+            <%= search.select :range, options_for_select([['タイトル','title'],['作者','author']] ) %>
+               <%= search.text_field :keyword, value: @keyword, placeholder: '検索', class: "form-control"%>
+    　　      <%= search.submit "検索", class: "btn-sm btn-light" %>
+    　　    <% end %>
   　　    </div>
 　  </div>
   </div>
-    　
+
     　<!--検索結果の表示-->
   <div class="row">
           <div class="col-12">

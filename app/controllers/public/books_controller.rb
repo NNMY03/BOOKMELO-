@@ -1,35 +1,39 @@
 class Public::BooksController < ApplicationController
   def search
-    
+    @range = params[:range] #検索モデル
+
     # resultsに検索結果を格納する
     @book = []
 
     # タイトルで検索する場合
-    @title = params[:title]
+    #@title = params[:title]
+    @keyword = params[:keyword]
     # 楽天APIを使用して検索ワードの書籍が存在するか確認する
-     if @title.present?
+     #if @title.present?
+     if @range == "title"
      results =  RakutenWebService::Books::Book.search({
-        title: @title,
+        title: @keyword,
      })
      results.each do |result|
        book = Book.new(read(result))
        @book << book
       end
      end
-     
+
     # 著者で検索する場合
-    @author = params[:author]
+    #@author = params[:author]
     # 楽天APIを使用して検索ワードの書籍が存在するか確認する
-     if @author.present?
+     #if @author.present?
+     if @range == "author"
      results =  RakutenWebService::Books::Book.search({
-        author: @author,
+        author: @keyword,
      })
      results.each do |result|
        book = Book.new(read(result))
        @book << book
       end
      end
-     
+
    # すでにデータを取り込み済みか選別する
      @book.each do |book|
        unless Book.all.include?(book)
@@ -37,8 +41,8 @@ class Public::BooksController < ApplicationController
        end
      end
   end
-  
-  
+
+
   # 各カラムへデータを保存する
   private
   def read(result)
