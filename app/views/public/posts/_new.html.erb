@@ -8,10 +8,17 @@
   <!--  <= post.label "レビュー" %>-->
   <!--  <= post.text_area :body, class: 'form-control book_body' %>-->
   <!--</div>-->
-  <div class="form-group">
-  <%= post.label "感情カテゴリー" %>
-  <%= post.text_field :category, class: 'form-control book_category' %>  
-  </div>
+    <div class="form-group">
+      <%= post.collection_check_boxes(:post_ids, Post.all, :id, :category) do |b| %>
+        <label class="checkbox-inline">
+         <%= b.check_box class:"form-control2" do %>
+         <%= b.check_box + b.text %>
+         <% end %>
+         <%= b.label {b.text} %>
+        </label>
+    </div>
+
+    <% end %> 
   <div class="form-group">
   <%= post.label "コメント" %>
   <%= post.text_field :category, class: 'form-control book_category' %>  
