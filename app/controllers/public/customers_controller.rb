@@ -20,7 +20,7 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       flash[:notice] = "登録情報を更新しました"
-      redirect_to customers_information_path
+      redirect_to customer_path
     else
       render "edit"
     end

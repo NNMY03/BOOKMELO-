@@ -7,7 +7,6 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.text :comment
       t.text :memo
       t.string :star
-      t.string :category,       null: false
       t.boolean :posted_status, null: false, default: "false"
 
       t.timestamps

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_12_073552) do
+ActiveRecord::Schema.define(version: 2023_08_13_071142) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -83,8 +83,15 @@ ActiveRecord::Schema.define(version: 2023_08_12_073552) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "customer_id"
     t.integer "book_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "post_tags", force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -96,7 +103,6 @@ ActiveRecord::Schema.define(version: 2023_08_12_073552) do
     t.text "comment"
     t.text "memo"
     t.string "star"
-    t.string "category", null: false
     t.boolean "posted_status", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -108,6 +114,12 @@ ActiveRecord::Schema.define(version: 2023_08_12_073552) do
     t.integer "customer_id", null: false
     t.integer "post_id", null: false
     t.text "reason", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

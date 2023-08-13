@@ -10,7 +10,7 @@
 
         <% if customer_signed_in? %>
           <li>
-            <%= link_to customer_show_path(current_customer),class: 'nav-link text-light' do %>
+            <%= link_to customer_path(current_customer),class: 'nav-link text-light' do %>
               <i class="fas fa-home"></i> マイページ
             <% end %>
           </li>

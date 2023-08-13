@@ -9,7 +9,7 @@ devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
   namespace :admin do
     root to: 'homes#top'
     resources :customers, only:[:index, :show, :edit, :update]
-    resources :posts, only: [:index, :edit, :create, :destroy, :update]
+    resources :categories, only: [:index, :edit, :show, :create, :destroy, :update]
 
   end
 
@@ -26,11 +26,12 @@ devise_for :customers, skip: [:passwords], controllers: {
     root to: 'homes#top'
     get '/attention' => 'homes#attention', as: 'attention'
     # 会員画面
-    get   "customers/information/:id"  => "customers#show", as: 'customer_show'
-    get   "customers/information/edit/:id" => "customers#edit"
-    patch "customers/information"      => "customers#update"
-    get   "customers/confirm_withdraw" => "customers#confirm_withdraw"
-    patch "customers/withdraw"         => "customers#withdraw"
+    resources :customers, only: [:update, :show, :edit]
+    # get   "customers/information/:id"      => "customers#show", as: 'customer_show'
+    # get   "customers/information/:id/edit" => "customers#edit"
+    # patch "customers/information"          => "customers#update"
+    get   "customers/confirm_withdraw"     => "customers#confirm_withdraw"
+    patch "customers/withdraw"             => "customers#withdraw"
     # 投稿
     resources :posts, only: [:index, :show, :edit, :create, :destroy, :update] do
       get :favorites, on: :collection
