@@ -2,7 +2,7 @@ class Public::PostsController < ApplicationController
 
   def index
   end
-
+  
   def show
     @book = Book.find(params[:id])
     @post = Post.new
@@ -16,6 +16,7 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "ハッピーエンドをレビューしました"
       redirect_to post_path(@poat.id)
     else
+      @book = Book.find(params[:id])
       @posts = Post.all
       render 'Show'
     end
@@ -34,7 +35,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :comment, :star, :latest, :category, :memo)
+    params.require(:post).permit(:name, tag_ids:[], :title, :body, :comment, :star, :latest, :category, :memo)
   end
 
   

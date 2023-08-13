@@ -5,6 +5,12 @@ class Post < ApplicationRecord
 
   # お気に入り機能アソシエーション
   has_many :favorites, dependent: :destroy
+  
+  # タグ機能アソシエーション
+  has_many :post_tags, dependent: :destroy
+  has_many :tags, through: :post_tags
+
+
 
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)

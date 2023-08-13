@@ -1,31 +1,39 @@
 <div class="col-12">
   <%= form_with model: post, local:true do |post| %>
     <div class="form-group">
-    <%= post.label "読了日"%>
-    <%= post.date_field :reading_finish %>
-  </div>
+     <%= post.label "読了日"%>
+     <%= post.date_field :reading_finish %>
+    </div>
   <!--<div class="form-group">-->
   <!--  <= post.label "レビュー" %>-->
   <!--  <= post.text_area :body, class: 'form-control book_body' %>-->
   <!--</div>-->
     <div class="form-group">
-      <%= post.collection_check_boxes(:post_ids, Post.all, :id, :category) do |b| %>
-        <label class="checkbox-inline">
-         <%= b.check_box class:"form-control2" do %>
-         <%= b.check_box + b.text %>
-         <% end %>
-         <%= b.label {b.text} %>
-        </label>
+      <%= post.label :tag_id, class: "control-label" %>
+        <%= post.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <!--<label class="checkbox-inline">-->
+          <%= tag.check_box class:"form-control2" do %>
+            <%= tag.check_box + tag.text %>
+            <%= tag.label {tag.text} %>
+        <!--</label>-->
+          <% end %>
+        <%= tag.label {tag.text} %>
+      <% end %>
     </div>
 
-    <% end %> 
-  <div class="form-group">
-  <%= post.label "コメント" %>
-  <%= post.text_field :category, class: 'form-control book_category' %>  
-  </div>
-  <div class="form-group">
-  <%= post.label "メモ" %>
-  <%= post.text_field :category, class: 'form-control book_category' %>  
-  </div>
+    <div class="form-group">
+      <%= post.label "コメント" %>
+      <%= post.text_field :comment, class: 'form-control' %>  
+    </div>
+    
+    <div class="form-group">
+      <%= post.label "メモ" %>
+      <%= post.text_field :memo, class: 'form-control' %>  
+    </div>
+
+     <div class="form-group">
+      <%= post.submit class: 'btn btn-success' %>
+     </div>
+
   <% end %>
 </div>

@@ -3,7 +3,7 @@
 
       <h3>感情タグ　追加</h3>
 
-      <%=form_with model: @category, url: admin_posts_path, method: :post do |f| %>
+      <%=form_with model: @tag, url: admin_tags_path, method: :post do |f| %>
       <table class= 'mx-auto mt-5 mb-5'>
         <tr>
       <td><%= f.label :"感情タグ名", class: "mr-3" %></td>
@@ -18,10 +18,10 @@
           <h3>感情タグ　一覧</h3>
 
         <thead>
-         <% @categories.each do |category| %>
+         <% @tags.each do |tag| %>
         <tr>
-        <td><%= category.name %></td>
-        <td><%= link_to "編集する", edit_admin_post_path(category.id), class: "btn btn-sm btn-success" %></td>
+        <td><%= tag.name %></td>
+        <td><%= link_to "編集する", edit_admin_tag_path(tag.id), class: "btn btn-sm btn-success" %></td>
         </tr>
         <%end%>
         </thead>

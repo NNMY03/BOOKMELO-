@@ -8,8 +8,8 @@ devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
 
   namespace :admin do
     root to: 'homes#top'
+    resources :tags, only: [:index, :edit, :show, :create, :destroy, :update]
     resources :customers, only:[:index, :show, :edit, :update]
-    resources :categories, only: [:index, :edit, :show, :create, :destroy, :update]
 
   end
 
