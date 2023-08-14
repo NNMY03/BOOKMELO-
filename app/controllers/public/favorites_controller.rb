@@ -3,7 +3,6 @@ class Public::FavoritesController < ApplicationController
   def create
     post = Post.find(params[:post_id])
     favorite = current_customer.favorites.new(post_id: post.id)
-    # binding.irb
      favorite.save
      redirect_to books_path
   end

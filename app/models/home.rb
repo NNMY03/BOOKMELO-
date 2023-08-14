@@ -1,5 +1,5 @@
 class Home < ApplicationRecord
   
-  validates :パラメータ名, presence: true
-  
+  validates :attention, acceptance: true, on: :create
+
 end
