@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'attentions/attention'
+  end
 # 管理者用
 # URL /admin/sign_in ...
 devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
@@ -34,14 +37,14 @@ devise_for :customers, skip: [:passwords], controllers: {
     patch "customers/withdraw"             => "customers#withdraw"
     
     # 書籍検索
-    resources :books, only: [:show]
     get 'books/search', to: "books#search" do
-      resources :posts , only: [:new]
+      resource :posts , only: [:new]
     end
-    
-       # 投稿
-      resources :posts, only: [:index, :create, :show, :edit, :destroy, :update] do
-      get :favorites, on: :collection
+    resources :books, only: [:show, :index]
+      
+    # 投稿
+    resources :posts, only: [:index, :create, :show, :edit, :destroy, :update] do
+    get :favorites, on: :collection
       resource :favorites, only: [:create, :destroy]
     end
 

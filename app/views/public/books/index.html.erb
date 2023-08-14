@@ -1,10 +1,8 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-12'>
-      <h3>読書History</h3>
-        <% if @posts.count == 0 %>
-          <td><storng>まだ投稿がありません</storng></td>
-            <% else %>
+  <div class='col-12'>
+    <h3>タイムライン</h3>
+      <% if @posts.count == 0 %>
+        <td><storng>まだ投稿がありません</storng></td>
+          <% else %>
             <table>
               <thead>
                 <tr>
@@ -27,5 +25,3 @@
           </table>
       <% end %>
     </div>
-  </div>
-</div>

@@ -41,10 +41,17 @@ class Public::BooksController < ApplicationController
          book.save
        end
      end
-     
-
-  
   end
+  
+  def show
+    @book = Book.find(params[:id])
+    @posts = Post.all
+  end
+  
+  def index
+    @posts = Post.all 
+  end
+
 
 
   # 各カラムへデータを保存する

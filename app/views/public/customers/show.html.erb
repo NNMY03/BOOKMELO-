@@ -1,44 +1,54 @@
 <div class='container'>
-  <div class='row-12'>
-    <h1>User Home</h1>
-      <div class="col-4">
-        <table class='table'>
+  <div class='row'>
+    <div class="col-12">
+      <h1>User Home</h1>
+    </div>
+  </div>
+  
+  <div class='row'>
+    <div class="col-4">
+      <table class='table caption-top'>
+        <tr style="width: 50%">
+          <th><%= image_tag @customer.get_profile_image(250,200) %></th>
+        </tr>
+        <tr style="width: 30%">
+          <th><%= link_to "編集する", edit_customer_path(@customer), class:"btn btn-primary"%></th>
+        </tr>
+      </table>
+    </div>
+
+        
+    <div class="col-8">
+      <h3><%= @customer.name %> <%= link_to "記録する", books_search_path, class:"btn btn-primary"%></h3>
+        <table class='table caption-top'>
           <tr style="width: 50%">
-            <th><%= image_tag @customer.get_profile_image(250,200) %></th>
-          </tr>
-          <tr style="width: 30%">
             <th>introduction</th>
             <th><%= @customer.introduction %></th>
           </tr>
-          <tr style="width: 30%">
-            <th><%= link_to "編集する", edit_customer_path(@customer), class:"btn btn-primary"%></th>
-          </tr>
         </table>
-      </div>
 
-      <div class="col-8">
-        <h3><%= @customer.name %></h3>
-          <div><%= link_to "記録する", books_search_path, class:"btn btn-primary"%></div>
-            <table class="table table_bordered table-hover table-sm">
-              <thead>
-                <tr>
-                  <th>読了数</th>
-                  <th>お気に入り数</th>
-                  <th>コメント数</th>
-                  <th>メモ数</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><%= link_to "#{@customer.posts.count}", posts_path(current_customer) %></td>
-                  <td><%= link_to "#{@customer.posts.count}", favorites_posts_path(current_customer) %></td>
-                  <td><%= link_to "#{@posts.pluck(:comment).compact.count}", posts_path(current_customer) %></td>
-                  <td><%= link_to "#{@posts.pluck(:memo).compact.count}", posts_path(current_customer) %></td>
-                </tr>
-              </tbody>
-            </table>
-      </div>
+        <table class="table table-bordered table-sm">
+          <thead class="table-light">
+            <tr>
+              <th style="width: 50%">読了数</th>
+              <th style="width: 50%">お気に入り数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= link_to "#{@customer.posts.count}", posts_path(current_customer) %></td>
+              <td><%= link_to "#{@customer.posts.count}", favorites_posts_path(current_customer) %></td>
+                <!--<td><= link_to "#{@posts.pluck(:comment).compact.count}", posts_path(current_customer) %></td>-->
+                <!--<td><= link_to "#{@posts.pluck(:memo).compact.count}", posts_path(current_customer) %></td>-->
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
 
+
+<div class="card-list-container py-5">
+  <div class="row card w-50 mx-auto mt-4 shadow-lg">
   <div class='col-12'>
     <h3>最近の読書</h3>
       <% if @customer.posts.count == 0 %>
@@ -53,18 +63,19 @@
                   <th>読了日</th>
                 </tr>
               </thead>
-            <tbody>
-              <% @posts_latest3.each do |posts| %>
+            <% @posts_latest3.each do |posts| %>
+              <tbody>
                 <tr>
-                  <td><%= posts.book.img_big %></td>
+                  <td><%= image_tag posts.book.img_big %></td>
                   <td><%= posts.book.title %></td>
                   <td><%= posts.book.author %></td>
                   <td><%= posts. reading_finish %></td>
                 </tr>
-              <% end %>
-            </tbody>
+              </tbody>
+            <% end %>
           </table>
       <% end %>
     </div>
   </div>
+</div>
 </div>

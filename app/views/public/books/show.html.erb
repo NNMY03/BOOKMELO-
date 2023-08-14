@@ -9,7 +9,7 @@
        </thead>
        <tbody>
          <tr>
-          <!--<td><= image_tag @book.img_big %></td>-->
+          <td><%= image_tag @book.img_big %></td>
             <td><%= @book.title %></br>
                 著者：<%= @book.author %></br>
                 <div>出版社：<%= @book.publisher %></div></br>
@@ -19,15 +19,15 @@
        </tbody>
      </table>
   </div>
+
   <div class="row card w-50 mx-auto mt-4 shadow-lg">
       <div class="col-12">
          <h2>レビュー</h2>
-           <% if @posts.count == 0 %>
-             <storng><td>まだ投稿がありません</td></storng>
-              <% else %>
-
+            <% if @book.posts.count == 0 %>
+             <td><storng>レビューはまだありません</storng></td>
+            <% else %>
       <table>
-         <% @posts.each do |posts| %>
+         <% @book.posts.each do |posts| %>
            <tbody>
              <tr>
                <td>
@@ -39,7 +39,7 @@
                </td>
                <td>
                 <!--<= posts.star %>-->
-                 <= posts.tag.name %>
+                 <%= posts.tags.name %>
                </td>
                <td>
                  <% if posts.customer == current_customer %>
@@ -48,7 +48,7 @@
                </td>
              </tr>
            </tbody>
-          <% end %>
+         <% end %>
          <% end %>
       </table>
     </div>

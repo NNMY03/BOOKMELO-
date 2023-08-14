@@ -14,19 +14,17 @@ class Public::PostsController < ApplicationController
    else
     @posts = Post.all
     render 'show'
+   end
   end
-
   
   
   def index
-    @posts = Post.all
+    @posts = current_customer.posts.all
   end
   
   def show
     @posting = Post.find(params[:id])
     @posts = Post.all
-  end
-
   end
 
   def edit
