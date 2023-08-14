@@ -1,3 +1,38 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-visual {
+  width: 100%; /* 横幅いっぱい */
+  height: 400px; /* 高さ*/
+  // background-image: url("<%= asset_path('tanuki_cake.jpg') %>")
+  background-size: cover; /* 縦横比を維持したまま背景領域を埋め尽くす */
+  background-position: center; /* 背景画像を中央に配置 */
+  display: flex;
+  justify-content: center;
+  border-radius: 60px;
+}
+
+.main-visual-text {
+  width: 60%; /* 横幅40% */
+  height: 260px; /* 親の高さに揃える */
+  margin-top: 110px;
+  background-color: rgba(0,0,0,0.3); /* 背景色を半透明の黒にする */
+  border-radius: 50%; 
+  text-align: center; /* 文字を中央揃えにする */
+  padding-top: 70px; /* 上側の内側余白で垂直方向の位置を調整 */
+  color: #dcdcdc; /* 文字色を灰色に変更 */
+  font-size: 21px;
+  font-weight: bold;
+}
+
+
+// Place all the styles related to the public/homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/

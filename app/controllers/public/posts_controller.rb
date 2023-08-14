@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
 
   def new
+    @book = Book.find(params[:book_id])
     @posting = Post.new
   end
   
