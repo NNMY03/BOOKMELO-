@@ -84,13 +84,13 @@ ActiveRecord::Schema.define(version: 2023_08_14_101855) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "book_id"
+    t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "homes", force: :cascade do |t|
-    t.text "attention"
+    t.text "attention", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

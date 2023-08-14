@@ -7,20 +7,27 @@
               <thead>
                 <tr>
                   <th style="width: 30%"></th>
-                  <th style="width: 30%">タイトル</th>
+                  <th style="width: 20%">タイトル</th>
                   <th style="width: 20%">著者</th>
                   <th style="width: 20%">読了日</th>
+                  <th style="width: 20%">読みたい</th>
                 </tr>
               </thead>
             <tbody>
-              <% @posts.each do |posts| %>
+              <% @posts.each do |post| %>
                 <tr>
-                  <td><%= image_tag posts.book.img_big %></td>
-                  <td><%= posts.book.title %></td>
-                  <td><%= posts.book.author %></td>
-                  <td><%= posts.reading_finish %></td>
-                </tr>
-              <% end %>
+                  <td><%= image_tag post.book.img_big %></td>
+                  <td><%= post.book.title %></td>
+                  <td><%= post.book.author %></td>
+                  <td><%= post.reading_finish %></td>
+                 <% if current_customer.favorites?(post) %>
+    <%= button_to 'いいねを取り消す', post_favorites_path(post.id), method: :delete %>
+  <% else %>
+    <%= button_to 'いいね', post_favorites_path(post.id), method: :post %>
+  <% end %>
+                  </tr>
+                                <% end %>
+
             </tbody>
           </table>
       <% end %>

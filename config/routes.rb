@@ -26,17 +26,14 @@ devise_for :customers, skip: [:passwords], controllers: {
     get '/top' => 'homes#top', as: 'top'
     # 会員画面
     get   "customers/confirm_withdraw"     => "customers#confirm_withdraw"
+    patch "customers/withdraw"             => "customers#withdraw"
     resources :customers, only: [:update, :show, :edit]
     # get   "customers/information/:id"      => "customers#show", as: 'customer_show'
     # get   "customers/information/:id/edit" => "customers#edit"
     # patch "customers/information"          => "customers#update"
-    patch "customers/withdraw"             => "customers#withdraw"
     
     # 書籍検索
     get 'books/search', to: "books#search" 
-    # do
-    #   resource :posts , only: [:new]
-    # end
     resources :books, only: [:show, :index] do
       resource :posts, only: [:new]
     end
