@@ -56,16 +56,15 @@
             <tbody>
               <% @posts_latest3.each do |posts| %>
                 <tr>
-                  <td><%= link_to "#{posts.book_id}", post_path %></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><%= posts.book.img_big %></td>
+                  <td><%= posts.book.title %></td>
+                  <td><%= posts.book.author %></td>
+                  <td><%= posts. reading_finish %></td>
                 </tr>
               <% end %>
             </tbody>
           </table>
       <% end %>
-  </div>
     </div>
-
+  </div>
 </div>

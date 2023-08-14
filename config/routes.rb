@@ -36,7 +36,7 @@ devise_for :customers, skip: [:passwords], controllers: {
     # 書籍検索
     resources :books, only: [:show]
     get 'books/search', to: "books#search" do
-      resource :posts , only: [:new]
+      resources :posts , only: [:new]
     end
     
        # 投稿

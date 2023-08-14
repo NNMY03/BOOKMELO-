@@ -42,10 +42,7 @@ class Public::BooksController < ApplicationController
        end
      end
      
-     def show
-      @book = Book.find(params[:id])
-      @posts = Post.all
-     end
+
   
   end
 
