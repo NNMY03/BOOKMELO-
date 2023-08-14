@@ -3,14 +3,14 @@
     <h1>User Home</h1>
       <div class="col-4">
         <table class='table'>
-          <tr>
+          <tr style="width: 50%">
             <th><%= image_tag @customer.get_profile_image(250,200) %></th>
           </tr>
-          <tr>
+          <tr style="width: 30%">
             <th>introduction</th>
             <th><%= @customer.introduction %></th>
           </tr>
-          <tr>
+          <tr style="width: 30%">
             <th><%= link_to "編集する", edit_customer_path(@customer), class:"btn btn-primary"%></th>
           </tr>
         </table>
@@ -38,9 +38,8 @@
               </tbody>
             </table>
       </div>
-  </div>
 
-  <div class='row-12'>
+  <div class='col-12'>
     <h3>最近の読書</h3>
       <% if @customer.posts.count == 0 %>
         <td><storng>まだ投稿がありません</storng></td>
@@ -67,4 +66,6 @@
           </table>
       <% end %>
   </div>
+    </div>
+
 </div>

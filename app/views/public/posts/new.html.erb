@@ -1,0 +1,39 @@
+<div class="col-12">
+  <%= form_with model: posting, url: posts_path, method: :post, local:true do |posting| %>
+   <%= posting.hidden_field :book_id, value: book.id %>
+    <div class="form-group">
+     <%= posting.label "読了日"%>
+     <%= posting.date_field :reading_finish %>
+    </div>
+  <!--<div class="form-group">-->
+  <!--  <= post.label "レビュー" %>-->
+  <!--  <= post.text_area :body, class: 'form-control book_body' %>-->
+  <!--</div>-->
+    <div class="form-group">
+      <%= posting.label "感情タグ" %>
+        <%= posting.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <!--<label class="checkbox-inline">-->
+          <%= tag.check_box class:"form-contro5" do %>
+            <%= tag.check_box + tag.text %>
+        <!--</label>-->
+          <% end %>
+        <%= tag.label {tag.text} %>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= posting.label "コメント" %>
+      <%= posting.text_field :comment, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= posting.label "メモ" %>
+      <%= posting.text_field :memo, class: 'form-control' %>
+    </div>
+
+     <div class="form-group">
+      <%= posting.submit class: 'btn btn-success' %>
+     </div>
+
+  <% end %>
+</div>

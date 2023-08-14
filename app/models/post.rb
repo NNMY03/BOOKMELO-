@@ -16,8 +16,8 @@ class Post < ApplicationRecord
     favorites.exists?(customer_id: customer.id)
   end
 
-  include ActiveModel::Model
-  attr_accessor :id, :category
-  ALL = %w[].map.with_index(1) {|category, index| new(id: index, category: category)}.freeze
+  # include ActiveModel::Model
+  # attr_accessor :id, :category
+  # ALL = %w[].map.with_index(1) {|category, index| new(id: index, category: category)}.freeze
 
 end

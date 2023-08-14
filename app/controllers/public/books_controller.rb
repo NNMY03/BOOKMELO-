@@ -1,4 +1,5 @@
 class Public::BooksController < ApplicationController
+
   def search
     @range = params[:range] #検索モデル
 
@@ -40,6 +41,12 @@ class Public::BooksController < ApplicationController
          book.save
        end
      end
+     
+     def show
+      @book = Book.find(params[:id])
+      @posts = Post.all
+     end
+  
   end
 
 

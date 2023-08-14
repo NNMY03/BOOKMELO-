@@ -1,25 +1,31 @@
 class Public::PostsController < ApplicationController
 
+  def new
+    @posting = Post.new
+  end
+  
+  def create
+    @book = Book.find(params[:post][:book_id])
+    @posting = @book.posts.new(post_params)
+    @posting.customer_id = current_customer.id
+   if @posting.save
+    flash[:notice] = "ハッピーエンドをレビューしました"
+    redirect_to book_path(@book.id)
+   else
+    @posts = Post.all
+    render 'show'
+  end
+
+  
+  
   def index
+    @posts = Post.all
   end
   
   def show
-    @book = Book.find(params[:id])
-    @post = Post.new
+    @posting = Post.find(params[:id])
     @posts = Post.all
   end
-
-  def create
-    @post = Post.new(post_params)
-    @post.customer_id = current_customer.id
-    if @post.save
-      flash[:notice] = "ハッピーエンドをレビューしました"
-      redirect_to post_path(@poat.id)
-    else
-      @book = Book.find(params[:id])
-      @posts = Post.all
-      render 'Show'
-    end
 
   end
 
@@ -35,7 +41,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:name, tag_ids:[], :title, :body, :comment, :star, :latest, :category, :memo)
+    params.require(:post).permit(:reading_finish, :comment, :star, :memo, :book_id, :name, tag_ids:[])
   end
 
   
