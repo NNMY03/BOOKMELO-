@@ -3,6 +3,8 @@ class Public::HomesController < ApplicationController
   end
 
   def attention
+    @home = Home.new
+    
   end
 end
 

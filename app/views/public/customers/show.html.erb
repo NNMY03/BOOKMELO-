@@ -4,7 +4,7 @@
       <h1>User Home</h1>
     </div>
   </div>
-  
+
   <div class='row'>
     <div class="col-4">
       <table class='table caption-top'>
@@ -17,9 +17,12 @@
       </table>
     </div>
 
-        
+
     <div class="col-8">
-      <h3><%= @customer.name %> <%= link_to "記録する", books_search_path, class:"btn btn-primary"%></h3>
+      <h3>　<%= @customer.name %>　さん
+          <%= link_to "記録する", books_search_path, class:"btn btn-primary"%>
+          <%= link_to "読了一覧", posts_path(current_customer), class:"btn btn-primary"%>
+      </h3>
         <table class='table caption-top'>
           <tr style="width: 50%">
             <th>introduction</th>
@@ -31,15 +34,15 @@
           <thead class="table-light">
             <tr>
               <th style="width: 50%">読了数</th>
-              <th style="width: 50%">お気に入り数</th>
+              <th style="width: 50%">読みたい</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><%= link_to "#{@customer.posts.count}", posts_path(current_customer) %></td>
-              <td><%= link_to "#{@customer.posts.count}", favorites_posts_path(current_customer) %></td>
-                <!--<td><= link_to "#{@posts.pluck(:comment).compact.count}", posts_path(current_customer) %></td>-->
-                <!--<td><= link_to "#{@posts.pluck(:memo).compact.count}", posts_path(current_customer) %></td>-->
+              <td><%= @customer.posts.count %></td>
+              <td><%= @customer.favorites.count %></td>
+              <!--<td><= @posts.pluck(:comment).compact.count %></td>-->
+              <!--<td><= @posts.pluck(:memo).compact.count %></td>-->
             </tr>
           </tbody>
         </table>

@@ -26,10 +26,9 @@
      <%= posting.label "読了日"%>
      <%= posting.date_field :reading_finish %>
     </div>
-  <!--<div class="form-group">-->
-  <!--  <= post.label "レビュー" %>-->
-  <!--  <= post.text_area :body, class: 'form-control book_body' %>-->
-  <!--</div>-->
+
+     <%= render "star", posting: posting %>
+
     <div class="form-group">
       <%= posting.label "感情タグ" %>
         <%= posting.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>

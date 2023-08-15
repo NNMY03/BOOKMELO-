@@ -9,51 +9,58 @@
        </thead>
        <tbody>
          <tr>
-          <td><%= image_tag @book.img_big %></td>
-            <td><%= @book.title %></br>
-                著者：<%= @book.author %></br>
-                <div>出版社：<%= @book.publisher %></div></br>
-                <p>あらすじ：</br><%= @book.item_caption %></p>
+          <td><%= image_tag @posting.book.img_big %></td>
+            <td><%= @posting.book.title %></br>
+                著者：<%= @posting.book.author %></br>
+                <div>出版社：<%= @posting.book.publisher %></div></br>
+                <p>あらすじ：</br><%= @posting.book.item_caption %></p>
             </td>
          </tr>
        </tbody>
      </table>
   </div>
 
-  <%= render 'new', posting: @posting, book: @book %>
-
-  <div class="row card w-50 mx-auto mt-4 shadow-lg">
-      <div class="col-12">
-         <h2>レビュー</h2>
-           <% if @posts.count == 0 %>
-             <storng><td>まだ投稿がありません</td></storng>
-              <% else %>
-
-<table>
-<% @posts.each do |posts| %>
-  <tbody>
-    <tr>
-      <td>
-        <%= image_tag posts.customer.get_profile_image(100,100) %>
-        <%= posts.customer.name %>
-      </td>
-      <td>
-        <%= posts.comment %>
-      </td>
-      <td>
-        <!--<= posts.star %>-->
-        <%= posts.tag_ids.name %>
-      </td>
-      <td>
-        <% if posts.customer == current_customer %>
-        <%= link_to "Destroy", post_path(posts), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger float-end" %>
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-  <% end %>
-<% end %>
-</table>
+  <div class="row">
+    <div class="col-12">
+       <h2>レビュー</h2>
     </div>
   </div>
+  
+    <div class="row">
+      <div class="col">
+           <table>
+             <tbody>
+               <tr>
+                 <td>
+                   <%= image_tag @posting.customer.get_profile_image(200,200) %>
+                   <%= @posting.customer.name %>
+                 </td>
+               </tr>
+      </div>
+      
+       <div class="col">
+          <div class="row">
+              <tr>
+                <td>
+                  <%= @posting.comment %>
+                </td>
+                
+                  <td><%= render "static-rate", posting: @posting %></td>
+
+                  <!--<= posts.tag_ids.name %>-->
+                </td>
+                  <% if @posting.customer == current_customer %>
+                <td>
+                  <%= link_to "削除", post_path(@posting), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger float-end" %>
+                </td>
+                <td>
+                  <%= link_to '編集する', edit_post_path(@posting), class: "btn btn-sm btn-success" %>
+                </td>
+               <% end %>
+               </tr>
+             </tbody>
+           </table>
+        </div>
+      </div>
+    </div>
 </div>
