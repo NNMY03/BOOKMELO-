@@ -7,10 +7,8 @@ class Public::BooksController < ApplicationController
     @book = []
 
     # タイトルで検索する場合
-    #@title = params[:title]
     @keyword = params[:keyword]
     # 楽天APIを使用して検索ワードの書籍が存在するか確認する
-     #if @title.present?
      if @range == "title"
      results =  RakutenWebService::Books::Book.search({
         title: @keyword,
@@ -22,9 +20,7 @@ class Public::BooksController < ApplicationController
      end
 
     # 著者で検索する場合
-    #@author = params[:author]
     # 楽天APIを使用して検索ワードの書籍が存在するか確認する
-     #if @author.present?
      if @range == "author"
      results =  RakutenWebService::Books::Book.search({
         author: @keyword,

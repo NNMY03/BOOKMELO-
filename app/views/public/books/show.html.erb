@@ -1,6 +1,6 @@
 <div class="card-list-container py-5">
   <div class="row card w-50 mx-auto mt-4 shadow-lg">
-     <table class="col-12 table　table-sm">
+     <table class="col-12 table table-sm">
        <thead>
          <tr>
            <th style="width: 20%"></th>
@@ -26,7 +26,7 @@
             <% if @book.posts.count == 0 %>
              <td><storng>レビューはまだありません</storng></td>
             <% else %>
-      <table>
+      <table class="table">
          <% @book.posts.each do |posts| %>
            <tbody>
              <tr>
@@ -38,8 +38,12 @@
                  <%= posts.comment %>
                </td>
                <td>
-                <!--<= posts.star %>-->
-                 <%= posts.tags.name %>
+                 <%= render "static-rate", posts: posts %>
+               </td>
+               <td>
+                 <% posts.tags.each do |f| %>
+                   <%= f.name %>
+                 <% end %>
                </td>
                <td>
                  <% if posts.customer == current_customer %>

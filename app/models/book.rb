@@ -15,6 +15,5 @@ class Book < ApplicationRecord
   def favorites?(post)
     favorites.exists?(post_id: post.id)
   end
-
-
+  
 end

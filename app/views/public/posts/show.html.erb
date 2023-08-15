@@ -27,7 +27,7 @@
   </div>
   
     <div class="row">
-      <div class="col">
+      <div class="col-12">
            <table>
              <tbody>
                <tr>
@@ -47,14 +47,18 @@
                 
                   <td><%= render "static-rate", posting: @posting %></td>
 
-                  <!--<= posts.tag_ids.name %>-->
-                </td>
+                  <td>
+                     <% @posting.tags.each do |f| %>
+                       <%= f.name %>
+                     <% end %>
+                  </td>
                   <% if @posting.customer == current_customer %>
+                  
                 <td>
-                  <%= link_to "削除", post_path(@posting), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger float-end" %>
+                  <%= link_to "投稿削除", post_path(@posting), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger float-end" %>
                 </td>
                 <td>
-                  <%= link_to '編集する', edit_post_path(@posting), class: "btn btn-sm btn-success" %>
+                  <%= link_to '記録編集', edit_post_path(@posting), class: "btn btn-sm btn-success" %>
                 </td>
                <% end %>
                </tr>

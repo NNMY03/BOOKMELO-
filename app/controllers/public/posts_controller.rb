@@ -27,8 +27,7 @@ class Public::PostsController < ApplicationController
     flash[:notice] = "ハッピーエンドをレビューしました"
     redirect_to post_path(@posting)
    else
-    @posts = Post.all
-    render 'show'
+    render 'new'
    end
   end
   
@@ -50,7 +49,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:star, :reading_finish, :comment, :star, :memo, :book_id, :name, tag_ids:[])
+    params.require(:post).permit(:reading_finish, :comment, :star, :memo, :book_id, :name, tag_ids:[])
   end
 
   

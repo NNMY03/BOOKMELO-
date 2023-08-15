@@ -1,4 +1,7 @@
 <div class="card-list-container py-5">
+    <div class="row text-center">
+    <%= render '/layouts/errors', obj: @posting %>
+  </div>
   <div class="row card w-50 mx-auto mt-4 shadow-lg">
      <table class="col-12 table　table-sm">
        <thead>
@@ -32,10 +35,8 @@
     <div class="form-group">
       <%= posting.label "感情タグ" %>
         <%= posting.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-        <!--<label class="checkbox-inline">-->
           <%= tag.check_box class:"form-contro5" do %>
             <%= tag.check_box + tag.text %>
-        <!--</label>-->
           <% end %>
         <%= tag.label {tag.text} %>
       <% end %>
