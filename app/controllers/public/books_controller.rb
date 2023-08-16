@@ -1,13 +1,15 @@
 class Public::BooksController < ApplicationController
 
   def search
-    @range = params[:range] #検索モデル
+    #検索モデル
+    @range = params[:range]
+    @keyword = params[:keyword]
 
     # resultsに検索結果を格納する
     @book = []
+    #@isbns = []
 
     # タイトルで検索する場合
-    @keyword = params[:keyword]
     # 楽天APIを使用して検索ワードの書籍が存在するか確認する
      if @range == "title"
      results =  RakutenWebService::Books::Book.search({
@@ -33,23 +35,29 @@ class Public::BooksController < ApplicationController
 
    # すでにデータを取り込み済みか選別する
      @book.each do |book|
-       unless Book.all.include?(book)
-         book.save
-       end
+     #  @isbns << book.id
+        @book_in_db = Book.find_by(isbn: book.isbn)
+        if @book_in_db.nil?
+#        unless Book.find_by(isbn: book.isbn)
+          book.save
+        else
+          book.id = @book_in_db.id
+        end
      end
+    # @books_in_db = Book.where(isbn: @isbns)
   end
-  
+
   def show
     @book = Book.find(params[:id])
     @posts = Post.all
   end
-  
+
   def index
     if customer_signed_in?
     @posts = Post.posted_status
     else admin_signed_in?
     @posts = Post.all
-    end    
+    end
   end
 
 
