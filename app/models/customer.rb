@@ -11,9 +11,13 @@ class Customer < ApplicationRecord
 # お気に入り機能アソシエーション
  has_many :favorites, dependent: :destroy
 
-
 # customer　image画面
  has_one_attached :image
+ 
+ # 退会済みユーザーをはじく 
+ def active_for_authentication?
+  super && (self.is_deleted == false)
+ end
   
   def get_profile_image(height, width)
     unless image.attached?

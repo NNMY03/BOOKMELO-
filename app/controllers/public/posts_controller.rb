@@ -8,7 +8,13 @@ class Public::PostsController < ApplicationController
       @posting = Post.find(params[:id])
     if @posting.update(post_params)
       flash[:notice] = "記録の編集が完了しました"
+      
+      if customer_signed_in?
       redirect_to post_path(@posting)
+      else admin_signed_in?
+      redirect_to books_path
+      end
+      
     else
       render :edit
     end
@@ -39,7 +45,7 @@ class Public::PostsController < ApplicationController
   
   
   def index
-    @posts = current_customer.posts.all
+    @posts = current_customer.posts.posted_status
   end
   
   def show
@@ -49,7 +55,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:reading_finish, :comment, :star, :memo, :book_id, :name, tag_ids:[])
+    params.require(:post).permit(:reading_finish, :comment, :star, :memo, :book_id, :posted_status, :name, tag_ids:[])
   end
 
   

@@ -45,7 +45,11 @@ class Public::BooksController < ApplicationController
   end
   
   def index
-    @posts = Post.all 
+    if customer_signed_in?
+    @posts = Post.posted_status
+    else admin_signed_in?
+    @posts = Post.all
+    end    
   end
 
 
