@@ -51,7 +51,7 @@ class Public::BooksController < ApplicationController
 
   def index
     if customer_signed_in?
-    @posts = Post.posted_status
+    @posts = Post.posted_status.page(params[:page])
     else admin_signed_in?
     @posts = Post.all
     end
