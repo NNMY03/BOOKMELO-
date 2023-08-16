@@ -35,16 +35,13 @@ class Public::BooksController < ApplicationController
 
    # すでにデータを取り込み済みか選別する
      @book.each do |book|
-     #  @isbns << book.id
         @book_in_db = Book.find_by(isbn: book.isbn)
         if @book_in_db.nil?
-#        unless Book.find_by(isbn: book.isbn)
           book.save
         else
           book.id = @book_in_db.id
         end
      end
-    # @books_in_db = Book.where(isbn: @isbns)
   end
 
   def show

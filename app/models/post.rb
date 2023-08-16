@@ -13,9 +13,9 @@ class Post < ApplicationRecord
   validates :reading_finish, presence: true
   validates :tag_ids, presence: true
 
-# 公開機能
-scope :posted_status, -> {where(posted_status: false)}
-scope :unposted_status, -> {where(posted_status: true)}
+  # 公開機能
+  scope :posted_status, -> {where(posted_status: false)}
+  scope :unposted_status, -> {where(posted_status: true)}
 
 
   # include ActiveModel::Model
