@@ -14,11 +14,11 @@
        </thead>
        <tbody>
          <tr>
-          <td><%= image_tag @posting.book.img_big %></td>
-            <td><%= @posting.book.title %></br>
-                著者：<%= @posting.book.author %></br>
-                <div>出版社：<%= @posting.book.publisher %></div></br>
-                <p>あらすじ：</br><%= @posting.book.item_caption %></p>
+          <td><%= image_tag @book.img_big %></td>
+            <td><%= @book.title %></br>
+                著者：<%= @book.author %></br>
+                <div>出版社：<%= @book.publisher %></div></br>
+                <p>あらすじ：</br><%= @book.item_caption %></p>
             </td>
          </tr>
        </tbody>
@@ -27,52 +27,17 @@
 
   <div class="row">
     <div class="col-12">
-       <h2>レビュー</h2>
+       <h2>報告理由</h2>
     </div>
   </div>
     <div class="row">
       <div class="col-12">
-           <table>
-             <tbody>
-               <tr>
-                 <td>
-                   <%= image_tag @posting.customer.get_profile_image(200,200) %>
-                   <%= @posting.customer.name %>
-                 </td>
-               </tr>
-      </div>
-      <div class="col">
-        <div class="row">
-               <tr>
-                 <td>
-                   <%= @posting.comment %>
-                 </td>
-                 <td>
-                   <%= render "static-rate", posting: @posting %>
-                 </td>
-                 <td>
-                   <% @posting.tags.each do |f| %>
-                     <%= f.name %>
-                   <% end %>
-                 </td>
-                   <% if @posting.customer == current_customer %>
-                 <td>
-                    <%= link_to "投稿削除", post_path(@posting), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger float-end" %>
-                 </td>
-                 <td>
-                    <%= link_to '記録編集', edit_post_path(@posting), class: "btn btn-sm btn-success" %>
-                 </td>
-                   <% end %>
-                 <td>
-                   <% if @postung.customer != current_customer %>
-                     <%= link_to new_post_report_path do %>
-                       <i class="fas fa-exclamation-circle"></i>
-                     <% end %>
-                   <% end %>
-                 </td>
-               </tr>
-             </tbody>
-           </table>
+        <%= form_with model:[@book, @report] do |f| %>
+          <div class="form-group">
+            <%= f.text_area :reason, rows:'3', class:"form-control" %>
+            <%= f.submit "報告する", "data-confirm" => "本当に報告しますか？", class: "btn btn-sm btn-danger float-end" %>
+          </div>
+        <% end %>
         </div>
       </div>
     </div>

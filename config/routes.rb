@@ -37,13 +37,13 @@ devise_for :customers, skip: [:passwords], controllers: {
     get 'books/search', to: "books#search" 
     resources :books, only: [:show, :index] do
       resource :posts, only: [:new]
+      resources :reports, only: [:new, :create]
     end
       
     # 投稿
     resources :posts, only: [:index, :create, :show, :edit, :destroy, :update] do
     get :favorites, on: :collection
       resource :favorites, only: [:create, :destroy]
-      resources :reports, only: [:new, :create]
     end
 
   end

@@ -2,14 +2,14 @@ class Public::ReportsController < ApplicationController
   
   def new
    @report = Report.new
-   @post = Post.find(params[:id])
+   @book = Book.find(params[:book_id])
   end
   
   def create
-    @post = Post.find(params[:post_id])
+    @book = Book.find(params[:book_id])
     @report = Report.new(report_params)
     if @report.save
-      redirect_to post_path(@post), notice: "ご報告ありがとうございます。"
+      redirect_to book_path(@book), notice: "ご報告ありがとうございます。"
     else
       render "new"
     end
@@ -18,7 +18,7 @@ class Public::ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:reason)
+    params.require(:report).permit(:reason, :book_id, :img_big, :author, :publisher, :item_caption)
   end
 end
 

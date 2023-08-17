@@ -15,6 +15,12 @@
                 <div>出版社：<%= @book.publisher %></div></br>
                 <p>あらすじ：</br><%= @book.item_caption %></p>
             </td>
+                 <td>
+                     <%= link_to new_book_report_path(@book),class: "btn brn-sm", method: :get do %>
+                       <i class="fas fa-exclamation-circle"></i>
+                   <% end %>
+                 </td>
+
          </tr>
        </tbody>
      </table>
