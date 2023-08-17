@@ -10,6 +10,7 @@ devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
     root to: 'homes#top'
     resources :tags, only: [:index, :edit, :show, :create, :destroy, :update]
     resources :customers, only:[:index, :show, :edit, :update]
+    resources :reports, only: [:index, :show, :update]
 
   end
 
@@ -42,6 +43,7 @@ devise_for :customers, skip: [:passwords], controllers: {
     resources :posts, only: [:index, :create, :show, :edit, :destroy, :update] do
     get :favorites, on: :collection
       resource :favorites, only: [:create, :destroy]
+      resources :reports, only: [:new, :create]
     end
 
   end

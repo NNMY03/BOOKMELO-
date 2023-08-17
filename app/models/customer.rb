@@ -10,6 +10,10 @@ class Customer < ApplicationRecord
  
 # お気に入り機能アソシエーション
  has_many :favorites, dependent: :destroy
+ 
+# 通報機能
+  has_many :report
+  has_many :posts, through: :report
 
 # customer　image画面
  has_one_attached :image
@@ -33,6 +37,6 @@ class Customer < ApplicationRecord
 
 
 # 年齢セレクトボックス
-   enum age: {'10代':1, '20代':2, '30代':3, '40代':4, '50代':5, '60代':6, '70代':7, '80代':8 }
+   enum age: { ones:1, two:2, trees:3, fours:4, fives:5, sixs:6, sevens:7, eightas:8 }
 
 end
