@@ -5,6 +5,6 @@ class Report < ApplicationRecord
   belongs_to :post
   
 # 対応ステータス
-  eunm status: { waiting: 0, keep: 1, finish: 2 }
+  enum status: { waiting: 0, keep: 1, finish: 2 }
 
 end

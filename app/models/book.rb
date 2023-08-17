@@ -7,11 +7,11 @@ class Book < ApplicationRecord
 
   # お気に入り機能アソシエーション
   has_many :favorites, dependent: :destroy
-  
-  # def favorited_by?(customer)
-  #   favorites.exists?(customer_id: customer.id)
-  # end
-  
+
+# # 通報機能
+#   has_many :report
+#   has_many :customers, through: :report
+
   def favorites?(post)
     favorites.exists?(post_id: post.id)
   end

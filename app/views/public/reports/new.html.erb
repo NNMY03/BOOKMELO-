@@ -1,4 +1,9 @@
 <div class="card-list-container py-5">
+  <div class="row">
+    <div class="col-12">
+      <h2>不適切な投稿を報告する</h2>
+    </div>
+  </div>
   <div class="row card w-50 mx-auto mt-4 shadow-lg">
      <table class="col-12 table　table-sm">
        <thead>
@@ -25,7 +30,6 @@
        <h2>レビュー</h2>
     </div>
   </div>
-  
     <div class="row">
       <div class="col-12">
            <table>
@@ -59,6 +63,13 @@
                     <%= link_to '記録編集', edit_post_path(@posting), class: "btn btn-sm btn-success" %>
                  </td>
                    <% end %>
+                 <td>
+                   <% if @postung.customer != current_customer %>
+                     <%= link_to new_post_report_path do %>
+                       <i class="fas fa-exclamation-circle"></i>
+                     <% end %>
+                   <% end %>
+                 </td>
                </tr>
              </tbody>
            </table>
