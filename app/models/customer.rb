@@ -12,8 +12,7 @@ class Customer < ApplicationRecord
  has_many :favorites, dependent: :destroy
  
 # 通報機能
-  has_many :report
-  has_many :posts, through: :report
+  has_many :reports
 
 # customer　image画面
  has_one_attached :image

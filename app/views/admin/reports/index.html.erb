@@ -1,11 +1,13 @@
-<h3>通報一覧</h3>
+<div class="container mt-5 pb-5">
+  <div class="form-group text-center">
+    <h3>通報一覧</h3>
 
 <table class="table">
   <thead>
     <tr>
       <th>通報ID</th>
       <th>会員名</th>
-      <th>通報者</th>
+      <th>報告書籍</th>
       <th>ステータス</th>
     </tr>
   </thead>
@@ -16,15 +18,18 @@
           <%= link_to report.customer_id, admin_report_path(report) %>
         </td>
         <td>
-          <%= report.reported.name %>
+          <%= report.customer.name %>
         </td>
         <td>
-          <%= report.reporter.name %>
+          <%= report.book.title %>
         </td>
         <td>
-          <% report.status_i18n %>　　#enumで定義した日本語を呼び出す
+          <% report.status_i18n %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+  </div>
+</div>

@@ -2,7 +2,7 @@ class Report < ApplicationRecord
   
 # 通報機能
   belongs_to :customer
-  belongs_to :post
+  belongs_to :book
   
 # 対応ステータス
   enum status: { waiting: 0, keep: 1, finish: 2 }

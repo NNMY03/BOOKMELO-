@@ -4,7 +4,7 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = current_customer
     @posts = @customer.posts
-    @comments = @customer.posts.pluck(:comment).compact
+    # @comments = @customer.posts.pluck(:comment).compact
     # @customer.posts # ログインユーザーに紐づくPost一覧を取得
     # pluck(:comment) # Post一覧からcommentだけ抜き出す [comment1, comment2, '', '', COMMENT3]
     # compact # 空の情報を削除する

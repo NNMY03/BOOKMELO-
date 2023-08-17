@@ -17,7 +17,7 @@
   
 　 <div class="field">
     <%= f.label :age, '年齢' %><br/>
-    <%= f.select :age, Customer.ages.keys, class: "prefecture-select", include_blank: "選択して下さい" %>
+    <%= f.select :age, Customer.ages.keys.map{|k| [I18n.t("enums.customer.#{k}"), k]}, class: "prefecture-select", include_blank: "選択して下さい" %>
    </div>
 
    <div class="field">
