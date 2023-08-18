@@ -39,7 +39,7 @@ class Public::PostsController < ApplicationController
 
 
   def index
-    @posts = current_customer.posts.posted_status.page(params[:page])
+    @posts = current_customer.posts.posted_status.order(created_at: :desc).page(params[:page])
   end
 
   def show

@@ -8,6 +8,7 @@
       <th>通報ID</th>
       <th>会員名</th>
       <th>報告書籍</th>
+      <th>報告内容</th>
       <th>ステータス</th>
     </tr>
   </thead>
@@ -26,12 +27,19 @@
           <% end %>
         </td>
         <td>
+          <%= report.reason %>
+        </td>
+        <td>
           <% report.status_i18n %>
+            <%= form_with model: [:admin, report], method: :put, local: true do |f| %>
+              <%= f.select :status, Report.statuses.keys.map {|k| [I18n.t("enums.report.status.#{k}"), k]} %>
+              <%= f.submit "変更" %>
+            <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<%= paginate @reports %>
   </div>
 </div>

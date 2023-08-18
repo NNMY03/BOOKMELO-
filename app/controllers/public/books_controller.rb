@@ -62,7 +62,7 @@ class Public::BooksController < ApplicationController
   def index
     if customer_signed_in?
     @tags = Tag.all
-    @posts = Post.posted_status.page(params[:page])
+    @posts = Post.posted_status.order(created_at: :desc).page(params[:page])
      if params[:tag_id]
   	   @tag = Tag.find(params[:tag_id])
   	   @posts = @tag.posts.posted_status.page(params[:page])
@@ -72,7 +72,7 @@ class Public::BooksController < ApplicationController
     @posts = Post.all.page(params[:page])
      if params[:tag_id]
   	   @tag = Tag.find(params[:tag_id])
-  	   @posts = @tag.posts.posted_status.page(params[:page])
+  	   @posts = @tag.posts.posted_status.order(created_at: :desc).page(params[:page])
      end
 
     end

@@ -40,7 +40,7 @@ devise_for :customers, skip: [:passwords], controllers: {
     resources :posts, only: [:index, :create, :show, :edit, :destroy, :update] do
     get :favorites, on: :collection
       resource :favorites, only: [:create, :destroy]
-      resources :reports, only: [:new, :create]
+      resources :reports, only: [:new, :create, :update]
     end
 
   end
