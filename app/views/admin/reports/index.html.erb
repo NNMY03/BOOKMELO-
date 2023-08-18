@@ -15,13 +15,15 @@
     <% @reports.each do |report| %>
       <tr>
         <td>
-          <%= link_to report.customer_id, admin_report_path(report) %>
+          <%= report.customer_id %>
         </td>
         <td>
           <%= report.customer.name %>
         </td>
         <td>
-          <%= report.book.title %>
+          <%= link_to book_path(report.book) do %>
+            <%= report.book.title %>
+          <% end %>
         </td>
         <td>
           <% report.status_i18n %>

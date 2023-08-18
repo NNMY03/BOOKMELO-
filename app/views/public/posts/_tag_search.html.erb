@@ -1,0 +1,8 @@
+<table class="table table-light mt-5 border">
+  <tr>
+    <th class="text-center text-white genre-head">感情タグから探す</th>
+  </tr>
+  <% tags.each do |tag| %>
+  <tr class="mx-auto  text-center"><td><%= link_to tag.name, books_path(tag_id: tag.id), class: "text-decoration-none text-dark rounded bg-light p-2" %></td></tr>
+  <% end %>
+</table>

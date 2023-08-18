@@ -12,7 +12,17 @@ module BOOKMELO
     config.load_defaults 6.1
     
     config.i18n.default_locale = :ja
-    config.i18n.load_path += Dir[Rails.root.join('config/locales/*.yml').to_s]
+    # config.i18n.load_path += Dir[Rails.root.join('config/locales/*.yml').to_s]
+    
+    # バリテーションレイアウト変更
+        config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      if instance.kind_of?(ActionView::Helpers::Tags::Label)
+        # skip when label
+        html_tag.html_safe
+      else
+        "<div class=\"has-error\">#{html_tag}<span class=\"help-block\">#{instance.error_message.first}</span></div>".html_safe
+      end
+    end
 
     # Configuration for the application, engines, and railties goes here.
     #

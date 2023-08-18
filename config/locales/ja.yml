@@ -8,17 +8,23 @@ ja:
         name: '名前'
   enums:
       report:
-        waiting: "対応待ち"
-        keep: "保留"
-        finish: "対応済み"
+        status:
+          waiting: "対応待ち"
+          keep: "保留"
+          finish: "対応済み"
 
       customer:
-        ones: "10代"
-        two: "20代"
-        trees: "30代"
-        fours: "40代"
-        fives: "50代"
-        sixs: "60代"
-        sevens: "70代"
-        eightas: "80代"
-
+        age:
+          ones: "10代"
+          twos: "20代"
+          trees: "30代"
+          fours: "40代"
+          fives: "50代"
+          sixs: "60代"
+          sevens: "70代"
+          eightas: "80代"
+          
+        gender:
+          gender_male: "男性"
+          gender_female: "女性"
+          gender_normal: "入力なし"

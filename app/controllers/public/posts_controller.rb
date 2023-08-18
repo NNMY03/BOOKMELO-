@@ -1,25 +1,5 @@
 class Public::PostsController < ApplicationController
 
-   def edit
-    @posting = Post.find(params[:id])
- 　 end
-
-  def update
-      @posting = Post.find(params[:id])
-    if @posting.update(post_params)
-      flash[:notice] = "記録の編集が完了しました"
-
-      if customer_signed_in?
-      redirect_to post_path(@posting)
-      else admin_signed_in?
-      redirect_to books_path
-      end
-
-    else
-      render :edit
-    end
-  end
-
   def new
     @book = Book.find(params[:book_id])
     @posting = Post.new
@@ -37,12 +17,25 @@ class Public::PostsController < ApplicationController
    end
   end
 
+   def edit
+    @posting = Post.find(params[:id])
+  end
+
+  def update
+      @posting = Post.find(params[:id])
+    if @posting.update(post_params)
+   　   flash[:notice] = "記録の編集が完了しました"
+ 　     redirect_to post_path(@posting)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @posting = Post.find(params[:id])
     @posting.destroy
     redirect_to posts_path
   end
-
 
   def index
     @posts = current_customer.posts.posted_status.page(params[:page])

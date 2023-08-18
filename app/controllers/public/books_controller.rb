@@ -48,16 +48,30 @@ class Public::BooksController < ApplicationController
     @book = Book.find(params[:id])
     @posts = Post.all
   end
-
-  def index
-    if customer_signed_in?
-    @posts = Post.posted_status.page(params[:page])
-    else admin_signed_in?
-    @posts = Post.all
+  
+    def update
+      @book = Book.find(params[:id])
+    if @book.update(book_params)
+      flash[:notice] = "投稿書籍を非公開にしました"
+      redirect_to books_path
+    else
+      render :show
     end
   end
 
-
+  def index
+    if customer_signed_in?
+    @tags = Tag.all
+    @posts = Post.posted_status.page(params[:page])
+      if params[:tag_id]
+  	   @tag = Tag.find(params[:tag_id])
+  	   @posts = @tag.posts.posted_status.page(params[:page])
+  	  end
+    else admin_signed_in?
+    @tags = Tag.all
+    @posts = Post.all.page(params[:page])
+    end
+  end
 
   # 各カラムへデータを保存する
   private

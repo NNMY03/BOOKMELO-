@@ -18,9 +18,19 @@
                <p>あらすじ：</br><%= @book.item_caption %></p>
           </td>
           <td>
-             <%= link_to new_book_report_path(@book),class: "btn brn-sm", method: :get do %>
-               <i class="fas fa-exclamation-circle"></i>
-             <% end %>
+            <%= link_to new_book_report_path(@book),class: "btn brn-sm", method: :get do %>
+              <i class="fas fa-exclamation-circle"></i>
+                <% end %>
+                  <% if admin_signed_in? %>
+                    <%= form_with model: @book do |f| %>
+                      <td><%= f.label :book_status, "公開", value: false %>
+                         <%= f.radio_button :book_status, 'false' %>
+                         <%= f.label :book_status, "非公開", value: true %>
+                         <%= f.radio_button :book_status, 'true' %>
+                         <%= f.submit "設定" %>
+                       <% end %>
+                      </td>
+                   <% end %>
            </td>
          </tr>
        </tbody>

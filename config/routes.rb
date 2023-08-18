@@ -29,10 +29,7 @@ devise_for :customers, skip: [:passwords], controllers: {
     get   "customers/confirm_withdraw"     => "customers#confirm_withdraw"
     patch "customers/withdraw"             => "customers#withdraw"
     resources :customers, only: [:update, :show, :edit]
-    # get   "customers/information/:id"      => "customers#show", as: 'customer_show'
-    # get   "customers/information/:id/edit" => "customers#edit"
-    # patch "customers/information"          => "customers#update"
-    
+
     # 書籍検索
     get 'books/search', to: "books#search" 
     resources :books, only: [:show, :index] do

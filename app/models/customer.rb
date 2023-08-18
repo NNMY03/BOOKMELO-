@@ -22,20 +22,23 @@ class Customer < ApplicationRecord
   super && (self.is_deleted == false)
  end
   
-  def get_profile_image(height, width)
-    unless image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.png')
-      image.attach(io: File.open(file_path), filename: 'default-image.png', content_type: 'image/png')
-    end
-      image.variant(resize_to_limit: [width, height]).processed
-  end
- 
-   def favorites?(post)
-    favorites.exists?(post_id: post.id)
+ def get_profile_image(height, width)
+   unless image.attached?
+    file_path = Rails.root.join('app/assets/images/no_image.png')
+    image.attach(io: File.open(file_path), filename: 'default-image.png', content_type: 'image/png')
    end
+    image.variant(resize_to_limit: [width, height]).processed
+ end
+ 
+ def favorites?(post)
+  favorites.exists?(post_id: post.id)
+ end
 
 
 # 年齢セレクトボックス
-   enum age: { ones:1, two:2, trees:3, fours:4, fives:5, sixs:6, sevens:7, eightas:8 }
+enum age: { ones:0, twos:1, trees:2, fours:3, fives:4, sixs:5, sevens:6, eightas:7 }
+   
+# 性別ラジオボタン
+enum gender: { gender_male: 0, gender_female: 1, gender_normal: 2 }
 
 end

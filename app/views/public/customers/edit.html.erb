@@ -13,23 +13,21 @@
         <%= f.file_field :image, class: "form-control-file user_image", accept: 'image/*' %>
       </div>
       <div class="form-group">
-        <%= f.label :email %>
+        <%= f.label :email %></br>
         <%= f.email_field :email, class: "form-control-email" %>
       </div>
 　    <div class="field">
         <%= f.label :age, '年齢' %><br/>
-        <%= f.select :age, Customer.ages.keys, class: "prefecture-select", include_blank: "選択して下さい" %>
+        <%= f.select :age, Customer.ages.keys.map{|k| [I18n.t("enums.customer.age.#{k}"), k]}, class: "prefecture-select", include_blank: "選択して下さい" %>
        </div>
        <div class="field">
-        <%= f.label :name, '性別' %><br/>
-        <%= f.radio_button :gender, :male %>
-        <%= f.label :gender_male, "男性" %>
-
-        <%= f.radio_button :gender, :female %>
-        <%= f.label :gender_female, "女性" %>
-    
-        <%= f.radio_button :gender, :others %>
-        <%= f.label :gender_female, "入力なし" %>
+        <%= f.label :gender, '性別' %><br/>
+        <%= f.radio_button :gender, Customer.genders.key(0) %>
+        <%= f.label :gender, Customer.genders_i18n[:gender_male], value: Customer.genders.key(0) %>
+        <%= f.radio_button :gender, Customer.genders.key(1) %>
+        <%= f.label :gender, Customer.genders_i18n[:gender_female], value: Customer.genders.key(0) %>
+        <%= f.radio_button :gender, Customer.genders.key(2) %>
+        <%= f.label :gender, Customer.genders_i18n[:gender_normal], value: Customer.genders.key(0) %>
        </div>
        <div class="form-group">
         <%= f.label :introduction %>

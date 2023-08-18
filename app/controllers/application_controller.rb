@@ -20,3 +20,8 @@ class ApplicationController < ActionController::Base
       top_path # ログアウト後に遷移するpathを設定
   end
 end
+
+
+def configure_permitted_parameters
+  devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :name, :age, :gender, :password_confirmation])
+end
