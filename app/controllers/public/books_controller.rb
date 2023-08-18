@@ -50,26 +50,31 @@ class Public::BooksController < ApplicationController
   end
   
     def update
-      @book = Book.find(params[:id])
-    if @book.update(book_params)
-      flash[:notice] = "投稿書籍を非公開にしました"
-      redirect_to books_path
-    else
+       @book = Book.find(params[:id])
+     if @book.update(book_params)
+       flash[:notice] = "投稿書籍を非公開にしました"
+       redirect_to book_path(@book)
+     else
       render :show
+     end
     end
-  end
 
   def index
     if customer_signed_in?
     @tags = Tag.all
     @posts = Post.posted_status.page(params[:page])
-      if params[:tag_id]
+     if params[:tag_id]
   	   @tag = Tag.find(params[:tag_id])
   	   @posts = @tag.posts.posted_status.page(params[:page])
-  	  end
+     end
     else admin_signed_in?
     @tags = Tag.all
     @posts = Post.all.page(params[:page])
+     if params[:tag_id]
+  	   @tag = Tag.find(params[:tag_id])
+  	   @posts = @tag.posts.posted_status.page(params[:page])
+     end
+
     end
   end
 

@@ -14,11 +14,11 @@
        </thead>
        <tbody>
          <tr>
-          <td><%= image_tag @book.img_big %></td>
-            <td><%= @book.title %></br>
-                著者：<%= @book.author %></br>
-                <div>出版社：<%= @book.publisher %></div></br>
-                <p>あらすじ：</br><%= @book.item_caption %></p>
+          <td><%= image_tag @post.book.img_big %></td>
+            <td><%= @post.book.title %></br>
+                著者：<%= @post.book.author %></br>
+                <div>出版社：<%= @post.book.publisher %></div></br>
+                <p>あらすじ：</br><%= @post.book.item_caption %></p>
             </td>
          </tr>
        </tbody>
@@ -32,7 +32,7 @@
   </div>
     <div class="row">
       <div class="col-12">
-        <%= form_with model:[@book, @report] do |f| %>
+        <%= form_with model:[@post, @report] do |f| %>
           <div class="form-group">
             <%= f.text_area :reason, rows:'3', class:"form-control" %>
             <%= f.submit "報告する", "data-confirm" => "本当に報告しますか？", class: "btn btn-sm btn-danger float-end" %>

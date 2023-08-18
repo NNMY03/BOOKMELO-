@@ -20,6 +20,10 @@ class Post < ApplicationRecord
   scope :posted_status, -> {where(posted_status: false)}
   scope :unposted_status, -> {where(posted_status: true)}
 
+# 通報機能
+  has_many :report
+  has_many :customers, through: :report
+  
 
   # include ActiveModel::Model
   # attr_accessor :id, :category

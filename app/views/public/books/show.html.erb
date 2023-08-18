@@ -17,21 +17,6 @@
                <div>出版社：<%= @book.publisher %></div></br>
                <p>あらすじ：</br><%= @book.item_caption %></p>
           </td>
-          <td>
-            <%= link_to new_book_report_path(@book),class: "btn brn-sm", method: :get do %>
-              <i class="fas fa-exclamation-circle"></i>
-                <% end %>
-                  <% if admin_signed_in? %>
-                    <%= form_with model: @book do |f| %>
-                      <td><%= f.label :book_status, "公開", value: false %>
-                         <%= f.radio_button :book_status, 'false' %>
-                         <%= f.label :book_status, "非公開", value: true %>
-                         <%= f.radio_button :book_status, 'true' %>
-                         <%= f.submit "設定" %>
-                       <% end %>
-                      </td>
-                   <% end %>
-           </td>
          </tr>
        </tbody>
      </table>
@@ -63,9 +48,29 @@
                  <% end %>
                </td>
                <td>
-                 <% if posts.customer == current_customer %>
-                 <%= link_to "Destroy", post_path(posts), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger float-end" %>
+                 <%= link_to new_post_report_path(posts),class: "btn brn-sm", method: :get do %>
+                   <i class="fas fa-exclamation-circle"></i>
                  <% end %>
+               </td>
+               <td>
+               <% if customer_signed_in? %>
+                 <% if posts.customer == current_customer %>
+                     <%= link_to "投稿削除", post_path(posts), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger float-end" %>
+                     <%= link_to '記録編集', edit_post_path(posts), class: "btn btn-sm btn-success" %>
+                   <% end %>
+                   
+               <% else admin_signed_in? %>
+                    <%= form_with model: posts do |f| %>
+                      <td><%= f.label :posted_status, "公開", value: false %>
+                         <%= f.radio_button :posted_status, 'false' %>
+                         <%= f.label :posted_status, "非公開", value: true %>
+                         <%= f.radio_button :posted_status, 'true' %>
+                         <%= f.submit "設定" %>
+                       <% end %>
+                      </td>
+                   <% end %>
+           </td>
+
                </td>
              </tr>
            </tbody>

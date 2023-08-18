@@ -21,8 +21,8 @@
           <%= report.customer.name %>
         </td>
         <td>
-          <%= link_to book_path(report.book) do %>
-            <%= report.book.title %>
+          <%= link_to post_path(report.post) do %>
+            <%= report.post.book.title %>
           <% end %>
         </td>
         <td>

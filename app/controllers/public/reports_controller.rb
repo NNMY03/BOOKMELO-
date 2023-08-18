@@ -2,16 +2,16 @@ class Public::ReportsController < ApplicationController
   
   def new
    @report = Report.new
-   @book = Book.find(params[:book_id])
+   @post = Post.find(params[:post_id])
   end
   
   def create
-    @book = Book.find(params[:book_id])
+    @post = Post.find(params[:post_id])
     @report = Report.new(report_params)
     @report.customer_id = current_customer.id
-    @report.book_id = @book.id     #通報者(reporter_id)にcurrent_user.idを代入
+    @report.post_id = @post.id     #通報者(reporter_id)にcurrent_user.idを代入
     if @report.save
-      redirect_to book_path(@book), notice: "ご報告ありがとうございます。"
+      redirect_to post_path(@post), notice: "ご報告ありがとうございます。"
     else
       render "new"
     end

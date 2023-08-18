@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(version: 2023_08_14_101855) do
 
   create_table "reports", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.integer "book_id", null: false
+    t.integer "post_id", null: false
     t.text "reason", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false

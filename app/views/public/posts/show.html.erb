@@ -51,6 +51,7 @@
                      <%= f.name %>
                    <% end %>
                  </td>
+                  <% if customer_signed_in? %>
                    <% if @posting.customer == current_customer %>
                  <td>
                     <%= link_to "投稿削除", post_path(@posting), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger float-end" %>
@@ -58,7 +59,18 @@
                  <td>
                     <%= link_to '記録編集', edit_post_path(@posting), class: "btn btn-sm btn-success" %>
                  </td>
+                 <% end %>
+                  <% else admin_signed_in? %>
+                    <%= form_with model: @posting, method: :put do |f| %>
+                      <td><%= f.label :posted_status, "公開", value: false %>
+                         <%= f.radio_button :posted_status, 'false' %>
+                         <%= f.label :posted_status, "非公開", value: true %>
+                         <%= f.radio_button :posted_status, 'true' %>
+                         <%= f.submit "設定" %>
+                       <% end %>
+                      </td>
                    <% end %>
+
                </tr>
              </tbody>
            </table>
