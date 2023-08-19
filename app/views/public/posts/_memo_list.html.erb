@@ -1,0 +1,29 @@
+        <% if @postmemo.count == 0 %>
+          <td><storng>メモはありません</storng></td>
+            <% else %>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th style="width: 20%"></th>
+                  <th style="width: 20%">タイトル</th>
+                  <th style="width: 20%">著者</th>
+                  <th style="width: 15%">読了日</th>
+                  <th style="width: 15%">メモ</th>
+                  <th style="width: 10%">詳細</th>
+                </tr>
+              </thead>
+            <tbody>
+              <% @postmemo.each do |post| %>
+                <tr>
+                  <td><%= image_tag post.book.img_big %></td>
+                  <td><%= post.book.title %></td>
+                  <td><%= post.book.author %></td>
+                  <td><%= post.reading_finish %></td>
+　                <td><%= post.memo %></td>
+                  <td><%= link_to "詳細", post_path(post), class: "btn btn-primary"%></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <%= paginate @postmemo %>
+      <% end %>

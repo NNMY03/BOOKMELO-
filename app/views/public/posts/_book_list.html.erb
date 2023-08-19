@@ -1,0 +1,29 @@
+        <% if @posts.count == 0 %>
+          <td><storng>まだ投稿がありません</storng></td>
+            <% else %>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th style="width: 20%"></th>
+                  <th style="width: 20%">タイトル</th>
+                  <th style="width: 20%">著者</th>
+                  <th style="width: 15%">読了日</th>
+                  <th style="width: 15%">レビュー</th>
+                  <th style="width: 10%">詳細</th>
+                </tr>
+              </thead>
+            <tbody>
+              <% @posts.each do |posts| %>
+                <tr>
+                  <td><%= image_tag posts.book.img_big %></td>
+                  <td><%= posts.book.title %></td>
+                  <td><%= posts.book.author %></td>
+                  <td><%= posts.reading_finish %></td>
+　                <td><%= render "static-rate", posting: posts %></td>
+                  <td><%= link_to "詳細", post_path(posts), class: "btn btn-primary"%></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <%= paginate @posts %>
+      <% end %>

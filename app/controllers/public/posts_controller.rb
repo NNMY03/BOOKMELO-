@@ -40,12 +40,23 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = current_customer.posts.posted_status.order(created_at: :desc).page(params[:page])
+
+    # お気に入り一覧
+    favorites = Favorite.where(customer_id: current_customer.id).pluck(:post_id)
+    @favorite_list = Post.where(id: favorites)
+
+    # メモ機能
+    #@post = current_customer.posts.select(:memo)
+    # 空のものを取得しない
+    @postmemo = Post.where(customer_id: current_customer.id).where.not(memo: [nil, ''])
+
+
   end
 
   def show
     @posting = Post.find(params[:id])
   end
-  
+
   private
 
   def post_params

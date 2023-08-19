@@ -1,5 +1,8 @@
-  <div class="col-2 ml-4 mt-4">
-    <%= render 'public/posts/tag_search', tags: @tags %>
+<div class="container">
+  <div class="row">
+  <div class="col-12 ml-4 mt-4">
+        <%= render 'public/posts/tag_search', tags: @tags %>
+
   </div>
   
   <div class='col-12'>
@@ -53,3 +56,5 @@
         <%= paginate @posts %>
       <!--< end %>-->
     </div>
+  </div>
+</div>

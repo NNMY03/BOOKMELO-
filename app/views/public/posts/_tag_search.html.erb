@@ -1,8 +1,15 @@
-<table class="table table-light mt-5 border">
-  <tr>
-    <th class="text-center text-white genre-head">感情タグから探す</th>
-  </tr>
-  <% tags.each do |tag| %>
-  <tr class="mx-auto  text-center"><td><%= link_to tag.name, books_path(tag_id: tag.id), class: "text-decoration-none text-dark rounded bg-light p-2" %></td></tr>
-  <% end %>
+<table class="table table-light mt-5 table-bordered">
+  <thead>
+    <tr class="text-center genre-head">
+      感情タグから探す
+    </tr>
+  </thead>
+  <tbody>
+    <% tags.each do |tag| %>
+    <tr class="mx-auto  text-center">
+      <%= link_to tag.name, books_path(tag_id: tag.id), class: "text-decoration-none text-dark rounded bg-light p-2" %>
+      <% end %>
+      <%= link_to "＃ALL", books_path, class: "text-decoration-none text-dark rounded bg-light p-2"%>
+    </tr>
+  </tbody>
 </table>

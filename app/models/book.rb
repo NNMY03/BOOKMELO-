@@ -11,10 +11,10 @@ class Book < ApplicationRecord
   # タグ機能アソシエーション
   has_many :post_tags
   has_many :tags, through: :post_tags
-  
+
 
   def favorites?(post)
     favorites.exists?(post_id: post.id)
   end
-  
+
 end

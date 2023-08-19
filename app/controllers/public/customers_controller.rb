@@ -41,7 +41,7 @@ class Public::CustomersController < ApplicationController
 
 # ユーザー投稿データを取得
 def set_post
-  @posts = current_customer.posts.allorder(created_at: :desc)
+  @posts = current_customer.posts.all.order(created_at: :desc)
 end
 
   def customer_params

@@ -38,7 +38,7 @@ devise_for :customers, skip: [:passwords], controllers: {
       
     # 投稿
     resources :posts, only: [:index, :create, :show, :edit, :destroy, :update] do
-    get :favorites, on: :collection
+     get :favorites, on: :collection
       resource :favorites, only: [:create, :destroy]
       resources :reports, only: [:new, :create, :update]
     end

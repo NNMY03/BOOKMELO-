@@ -15,6 +15,7 @@ class Public::BooksController < ApplicationController
      results =  RakutenWebService::Books::Book.search({
         title: @keyword,
      })
+
      results.each do |result|
        book = Book.new(read(result))
        @book << book
@@ -42,13 +43,14 @@ class Public::BooksController < ApplicationController
           book.id = @book_in_db.id
         end
      end
+
   end
 
   def show
     @book = Book.find(params[:id])
     @posts = Post.all
   end
-  
+
     def update
        @book = Book.find(params[:id])
      if @book.update(book_params)
@@ -67,6 +69,7 @@ class Public::BooksController < ApplicationController
   	   @tag = Tag.find(params[:tag_id])
   	   @posts = @tag.posts.posted_status.page(params[:page])
      end
+
     else admin_signed_in?
     @tags = Tag.all
     @posts = Post.all.page(params[:page])
