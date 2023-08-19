@@ -1,24 +1,22 @@
 <div class='container'>
   <div class='row'>
     <div class='col-12'>
-      <h3>読書History</h3>
-    </div>
+      <h2 class="text-center">読書History</h2>
   
-      <div class="col-12 ">
         <!--タブ部分-->
-        <ul class="tab-list list-group-horizontal">
-          <li class="tab tab-active list-group-item col-3">
+        <ul class="row tab-list justify-content-center text-center">
+          <li class="tab tab-active list-group-item col-lg-3">
             読書目録
           </li>
-          <li class="tab list-group-item col-3">
+          <li class="tab list-group-item col-lg-3">
             読みたい
           </li>
-          <li class="tab list-group-item col-3">
+          <li class="tab list-group-item col-lg-3">
             メモ
           </li>
-          </ul>
-      </div>
-      
+        </ul>
+
+
       <!--タブで選択された要素部分-->
       <div class="tabbox-contents">
         <div class="tabbox box-show">
@@ -31,6 +29,7 @@
           <%= render 'public/posts/memo_list', posts: @memo_list %>
         </div>
       </div>
+    </div>
 
   </div>
 </div>

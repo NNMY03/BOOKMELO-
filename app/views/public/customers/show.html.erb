@@ -19,10 +19,11 @@
 
 
     <div class="col-8">
-      <h3>　<%= @customer.name %>　さん
-          <%= link_to "記録する", books_search_path, class:"btn btn-primary"%>
-          <%= link_to "読了一覧", posts_path(current_customer), class:"btn btn-primary"%>
-      </h3>
+      <h3>　<%= @customer.name %>　さん</h3>
+          <p class="text-right">
+            <%= link_to "記録する", books_search_path, class:"btn btn-primary"%>
+            <%= link_to "読了一覧", posts_path(current_customer), class:"btn btn-primary"%>
+          </p>
         <table class='table caption-top'>
           <tr style="width: 50%">
             <th>introduction</th>
