@@ -61,3 +61,5 @@ gem 'gon', '~> 6.2.0'
 gem 'kaminari','~> 1.2.1'
 gem 'jquery-rails'
 gem 'rails-i18n'
+
+gem 'chart-js-rails', '~> 0.1.4'
