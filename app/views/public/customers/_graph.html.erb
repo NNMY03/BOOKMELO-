@@ -1,0 +1,33 @@
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>今日の読了数</th>
+      <th>前日の読了数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= current_customer.posts.today_count.count %></td>
+      <td><%= current_customer.posts.agoday_count.count %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>今週の投稿数</th>
+      <th>前週の投稿数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= current_customer.posts.toweek_count.count %></td>
+      <td><%= current_customer.posts.agoweek_count.count %></td>
+    </tr>
+  </tbody>
+</table

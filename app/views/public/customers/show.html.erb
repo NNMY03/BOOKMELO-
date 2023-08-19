@@ -41,14 +41,18 @@
             <tr>
               <td><%= @customer.posts.count %></td>
               <td><%= @customer.favorites.count %></td>
-              <!--<td><= @posts.pluck(:comment).compact.count %></td>-->
-              <!--<td><= @posts.pluck(:memo).compact.count %></td>-->
             </tr>
           </tbody>
         </table>
     </div>
   </div>
-
+  
+  <div class="row">
+    <dic class="col-12">
+      <h3>投稿数の前日比・前週比</h3>
+      <%= render 'public/customers/graph',posts: @posts %>
+    </dic>
+  </div>
 
 <div class="card-list-container py-5">
   <div class="row card w-50 mx-auto mt-4 shadow-lg">

@@ -9,6 +9,10 @@ class Public::CustomersController < ApplicationController
     # pluck(:comment) # Post一覧からcommentだけ抜き出す [comment1, comment2, '', '', COMMENT3]
     # compact # 空の情報を削除する
     @posts_latest3 = @posts.first(3)
+
+    # 月別集計
+    @month_record = @posts.group("strftime('%Y%m',posts.reading_finish)").count#.count #2023/03/25
+
   end
 
   def edit
