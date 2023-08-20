@@ -10,6 +10,7 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
+import Chart from "chart.js/auto";
 import "../stylesheets/application";
 
 Rails.start()
@@ -24,6 +25,8 @@ window.raty = function(elem,opt) {
 }
 
 window.$ = window.jQuery = require('jquery');
+
+global.Chart = Chart;
 
 // turbolinksの無効化
 $(document).on('turbolinks:load', function() {
