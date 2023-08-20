@@ -46,11 +46,29 @@ class Public::PostsController < ApplicationController
     @favorite_list = Post.where(id: favorites)
 
     # メモ機能
-    #@post = current_customer.posts.select(:memo)
     # 空のものを取得しない
     @postmemo = Post.where(customer_id: current_customer.id).where.not(memo: [nil, ''])
+    
+    # タグカウント数
+    # @post_count = @posts.tag.pluck(:name).compact
+    # @excitement_count = @posts.tap.where(name: "＃感動した").count
+    # @surprise_count = Tag.where(name: "＃驚いた").count
+    # @laugh_count = Tag.where(name: "＃笑った").count
+    # @fresh_count = Tag.where(name: "＃爽快だった").count
+    # @sad_count = Tag.where(name: "＃切なくなった").count
+    # @cry_count = Tag.where(name: "＃泣いた").count
+
+    # @post_count = Tag.joins(:name).group("tags.name").order('count_all DESC').count
 
 
+    # 月別集計
+    # 本番環境のみの処理
+    if Rails.env.production?
+    @month_record = @posts.group("date_format(posts.reading_finish, '%Y%m')").count #2023/03/25
+    # 開発環境のみの処理
+    elsif Rails.env.development?
+    @month_record = @posts.group("strftime('%Y%m',posts.reading_finish)").count #2023/03/25
+    end
   end
 
   def show

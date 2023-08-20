@@ -14,6 +14,9 @@
           <li class="tab list-group-item col-lg-3">
             メモ
           </li>
+          <li class="tab list-group-item col-lg-3">
+            読書記録
+          </li>
         </ul>
 
 
@@ -28,6 +31,10 @@
         <div class="tabbox">
           <%= render 'public/posts/memo_list', posts: @memo_list %>
         </div>
+        <div class="tabbox">
+          <%= render 'public/posts/graph',posts: @posts, month_record: @month_record, post_count: @post_count, excitement_count: @excitement_count, surprise_count: @surprise_count, laugh_count: @laugh_count, fresh_count: @fresh_count, sad_count: @sad_count, cry_count: @cry_count %>
+        </div>
+
       </div>
     </div>
 

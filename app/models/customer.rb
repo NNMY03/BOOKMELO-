@@ -13,7 +13,7 @@ class Customer < ApplicationRecord
  
 # 通報機能
   has_many :reports
-
+  
 # customer　image画面
  has_one_attached :image
  
