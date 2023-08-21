@@ -64,3 +64,11 @@ gem 'rails-i18n'
 
 gem 'chart-js-rails', '~> 0.1.4'
 
+# 本番環境用
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
+gem "net-smtp"
+gem "net-pop"
+gem "net-imap"
