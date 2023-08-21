@@ -1,7 +1,7 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container my-5 mx-">
-      <a class="navbar-brand" href="/"><span>BOOKMELO</span></a>
+  <nav class="navbar navbar-expand-lg navbar-right bg-right shadow">
+    <div class="container my-1 mx-auto">
+      <a class="navbar-brand" href="/top"><span><%= image_tag('logo.png') %></span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -10,28 +10,28 @@
 
         <% if customer_signed_in? %>
           <li>
-            <%= link_to customer_path(current_customer),class: 'nav-link text-light' do %>
+            <%= link_to customer_path(current_customer),class: 'nav-link text-dark' do %>
               <i class="fas fa-home"></i>
               マイページ
             <% end %>
           </li>
 
           <li>
-            <%=  link_to books_path,class: 'nav-link text-light' do %>
+            <%=  link_to books_path,class: 'nav-link text-dark' do %>
               <i class="fas fa-book-reader"></i>
               タイムライン
             <% end %>
           </li>
 
           <li>
-            <%=  link_to top_path ,class: 'nav-link text-light' do %>
+            <%=  link_to top_path ,class: 'nav-link text-dark' do %>
               <i class="fas fa-book-open"></i>
               BOOKMELOの楽しみ方
             <% end %>
           </li>
 
           <li>
-            <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
+            <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-dark' do %>
               <i class="fas fa-sign-out-alt"></i>
               ログアウト
             <% end %>
@@ -39,37 +39,37 @@
 
          <% elsif admin_signed_in? %>
           <li>
-            <%= link_to admin_reports_path, class: 'nav-link text-light' do %>
+            <%= link_to admin_reports_path, class: 'nav-link text-dark' do %>
             <i class="fas fa-exclamation-circle"></i>
               通報一覧
             <% end %>
           </li>
           <li>
-            <%= link_to admin_tags_path, class: 'nav-link text-light' do %>
+            <%= link_to admin_tags_path, class: 'nav-link text-dark' do %>
             <i class="fas fa-tags"></i>
               感情タグ登録
             <% end %>
           </li>
           <li>
-            <%=  link_to admin_customers_path, class: 'nav-link text-light' do %>
+            <%=  link_to admin_customers_path, class: 'nav-link text-dark' do %>
             <i class="fas fa-users"></i>
               会員一覧
             <% end %>
           </li>
           <li>
-            <%=  link_to books_path, class: 'nav-link text-light' do %>
+            <%=  link_to books_path, class: 'nav-link text-dark' do %>
             <i class="fas fa-book-reader"></i>
               タイムライン
             <% end %>
           </li>
           <li>
-            <%=  link_to top_path, class: 'nav-link text-light' do %>
+            <%=  link_to top_path, class: 'nav-link text-dark' do %>
             <i class="fas fa-book-open"></i>
               BOOKMELOの楽しみ方
             <% end %>
           </li>
           <li>
-            <%=  link_to destroy_admin_session_path, class: 'nav-link text-light', method: :delete do %>
+            <%=  link_to destroy_admin_session_path, class: 'nav-link text-dark', method: :delete do %>
               ログアウト
             <% end %>
           </li>
@@ -77,19 +77,19 @@
         <% else %>
 
           <li>
-            <%= link_to top_path,class: 'nav-link text-light' do %>
+            <%= link_to top_path,class: 'nav-link text-dark' do %>
               <i class="fas fa-book-open"></i>
               BOOKMELOの楽しみ
             <% end %>
           </li>
           <li>
-            <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
+            <%= link_to new_customer_registration_path,class: 'nav-link text-dark' do %>
               <i class="fas fa-customer-plus"></i>
               新規登録
             <% end %>
           </li>
           <li>
-            <%= link_to new_customer_session_path ,class: 'nav-link text-light' do %>
+            <%= link_to new_customer_session_path ,class: 'nav-link text-dark' do %>
               <i class="fas fa-sign-in-alt"></i>
               ログイン
             <% end %>

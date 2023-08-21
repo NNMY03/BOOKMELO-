@@ -1,18 +1,22 @@
 <div class="card-list-container py-5">
-  <div class="row card w-50 mx-auto mt-4 shadow-lg">
-     <table class="col-12 table table-sm">
+  <div class="row card w-50 mx-auto mt-4 shadow-lg px-4">
+     <table class="col-12 my-2">
        <thead>
          <tr>
-           <th style="width: 30%"></th>
+           <th style="width: 20%"></th>
            <th style="width: 50%"></th>
          </tr>
        </thead>
        <tbody>
          <tr>
-          <td>
-             <%= image_tag @book.img_big %>
+          <td class="text-center">
+               <%= image_tag @book.img_big %>
+            <p><%= link_to @book.rakuten_url ,class: "btn brn-sm" do %>
+               <i class="fas fa-atlas"></i> 購入はこちら
+               <% end %>
+            </p>
           </td>
-          <td><%= @book.title %></br>
+          <td><h4><%= @book.title %></h4></br>
                著者：<%= @book.author %></br>
                <div>出版社：<%= @book.publisher %></div></br>
                <p>あらすじ：</br><%= @book.item_caption %></p>
