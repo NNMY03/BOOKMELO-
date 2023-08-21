@@ -28,17 +28,11 @@ body {
   display: none;
 }
 
-.main {
-  height: 100%;
-  width: 100%;
+.main-container {
   display: table;
-  background-image: image-url('back_image.jpg');
+  background-image: image-url('assets/images/back_image.jpg');
+
   background-color:rgba(255,255,255,0.4);
   background-blend-mode:lighten;
   background-size: 100% 100%;
-}
-
-.h3 {
-  display: table-cell;
-  vertical-align: middle;
 }
