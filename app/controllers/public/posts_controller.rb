@@ -93,17 +93,12 @@ class Public::PostsController < ApplicationController
     @postmemo = Post.where(customer_id: current_customer.id).where.not(memo: [nil, ''])
 
     # タグカウント数
-    # @post_count = @posts.tag.pluck(:name).compact
-
-#    @excitement_count = @posts.PostTag.where(name: "＃感動した").count
     @excitement_count = Post.count_posts_with_tag(@posts, "＃感動した")
     @surprise_count = Post.count_posts_with_tag(@posts, "＃驚いた")
     @laugh_count = Post.count_posts_with_tag(@posts, "＃笑った")
     @fresh_count = Post.count_posts_with_tag(@posts, "＃爽快だった")
     @sad_count = Post.count_posts_with_tag(@posts, "＃切なくなった")
     @cry_count = Post.count_posts_with_tag(@posts, "＃泣いた")
-
-    # @post_count = Tag.joins(:name).group("tags.name").order('count_all DESC').count
   end
 
   def show

@@ -1,52 +1,55 @@
-<div class="row">
-  <div class="col-12">
-<h2>新規登録</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-<%= render "public/shared/error_messages", resource: resource %>
-
-  <div class='field'>
-   <%= f.label :name, 'ユーザー名' %><br/>
-   <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+<div class="main-container">
+  <div class="row">
+    <div class="col-6">
+      <h3>書物は我々のうちなる</br>凍った海のための斧なのだ。</h3>
+        <h10>フランツ・カフカ（現在のチェコ出身の小説家／1883－1924）</h10>
+          <p>BOOKMELOはハッピーエンドという物語を通して、凍えた海に天使の梯子をかけることを目的としたサイトです。</br>
+             あなたの心を満たす”物語”と出会えることを願います。
+          </p>
+    </div>
+    
+    <div class="col-6">
+      <h2>新規登録</h2>
+    　　  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+     　　　  <%= render "public/shared/error_messages", resource: resource %>
+       　   <div class='field'>
+       　     <%= f.label :name, 'ユーザー名' %><br/>
+       　     <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+       　  </div>
+       　  <div class="field">
+       　    <%= f.label :email, 'メールアドレス' %><br/>
+       　    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+       　  </div>
+       　  <div class="field">
+       　    <%= f.label :age, '年齢' %><br/>
+       　    <%= f.select :age, Customer.ages.keys.map{|k| [I18n.t("enums.customer.age.#{k}"), k]}, class: "prefecture-select", include_blank: "選択して下さい" %>
+       　  </div>
+       　  <div class="field">
+       　    <%= f.label :gender, '性別' %><br/>
+            <%= f.radio_button :gender, Customer.genders.key(0) %>
+            <%= f.label :gender, Customer.genders_i18n[:gender_male], value: Customer.genders.key(0) %>
+            <%= f.radio_button :gender, Customer.genders.key(1) %>
+            <%= f.label :gender, Customer.genders_i18n[:gender_female], value: Customer.genders.key(0) %>
+            <%= f.radio_button :gender, Customer.genders.key(2) %>
+            <%= f.label :gender, Customer.genders_i18n[:gender_normal], value: Customer.genders.key(0) %>
+          </div>
+          <div class="field">
+            <%= f.label :password, 'パスワード' %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password" %>
+          </div>
+          <div class="field">
+            <%= f.label :password_confirmation , 'パスワード　*再入力' %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </div>
+          <div class="actions">
+            <%= f.submit "Sign up" %>
+          </div>
+          <% end %>
+        <%= render "public/shared/links" %>
+    </div>
+    
   </div>
-
-  <div class="field">
-    <%= f.label :email, 'メールアドレス' %><br/>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  
-　 <div class="field">
-    <%= f.label :age, '年齢' %><br/>
-    <%= f.select :age, Customer.ages.keys.map{|k| [I18n.t("enums.customer.age.#{k}"), k]}, class: "prefecture-select", include_blank: "選択して下さい" %>
-   </div>
-
-   <div class="field">
-    <%= f.label :gender, '性別' %><br/>
-    <%= f.radio_button :gender, Customer.genders.key(0) %>
-    <%= f.label :gender, Customer.genders_i18n[:gender_male], value: Customer.genders.key(0) %>
-    <%= f.radio_button :gender, Customer.genders.key(1) %>
-    <%= f.label :gender, Customer.genders_i18n[:gender_female], value: Customer.genders.key(0) %>
-    <%= f.radio_button :gender, Customer.genders.key(2) %>
-    <%= f.label :gender, Customer.genders_i18n[:gender_normal], value: Customer.genders.key(0) %>
-   </div>
-
-  <div class="field">
-    <%= f.label :password, 'パスワード' %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation , 'パスワード　*再入力' %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
 </div>
