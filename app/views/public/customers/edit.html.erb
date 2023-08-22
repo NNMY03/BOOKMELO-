@@ -1,8 +1,8 @@
-<div class='container d-flex justify-content-center'>
+<div class='container mt-5'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       
-  <h2>User info</h2>
+  <h2 class="text-center">User info</h2>
     <%= form_with model: @customer, url: customer_path, method: :patch, local:true do |f| %>
       <div class="form-group">
         <%= f.label :name %>
@@ -39,8 +39,8 @@
     <% end %>
     
         <!--退会ボタン-->
-    <div class="actions row mt-5">
-      <div class="col-7"></div>
+    <div class="row my-5">
+      <div class="col"></div>
       <div>
         <%= link_to "退会する", customers_confirm_withdraw_path, class: "btn btn-sm btn-danger px-5" %>
       </div>  

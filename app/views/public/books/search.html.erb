@@ -4,12 +4,10 @@
       <h3 class="text-center">検索方法を選択のうえ、記録する書籍を検索してください</h3>
     </div>
   </div>
-      
+  
+<%= form_with url: books_search_path, method: :get, local: true do |search| %>
   <div class="row mt-3">
-    <div class="col-0">
-       <%= form_with url: books_search_path, method: :get, local: true do |search| %>
-    </div>
-    <div class="col-4 text-center">
+    <div class="col-4 text-center form-select form-select-lg">
        <%= search.select :range, options_for_select([['タイトル','title'],['作者','author']] ) %>
     </div>
     <div class="col-6">
@@ -18,8 +16,9 @@
     <div class="col-2">
        <%= search.submit "検索", class: "btn-sm btn-light" %>
     </div>
-    　 <% end %>
   </div>
+<% end %>
+
 
 <!--検索結果の表示-->
   <div class="row mt-5">

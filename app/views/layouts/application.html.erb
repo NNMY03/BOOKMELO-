@@ -13,7 +13,7 @@
   <body>
     <%= render 'layouts/header' %>
       <main>
-        <%= flash[:notice] %>
+        <p class="mt-2"><%= flash[:notice] %></p>
          <%= yield %>
       </main>
     <%= render 'layouts/footer' %>
