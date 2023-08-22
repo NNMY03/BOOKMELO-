@@ -1,9 +1,8 @@
-<%= stylesheet_pack_tag "public/homes", :media => "all" %>
 
-<div class="container">
+<div class="container d-flex justify-content-center">
   <div class="row">
     <div class="col-12 text-center mt-5">
-      <div class="main-visual", style="background-image: url(<%= asset_path('cover.jpg') %>);">
+      <div class="main-visual">
         <h1 class = "text-light">Attention</h1>
           <p class="main-visual-text text-light">当サイトは「ハッピーエンド」専門のレビューサイトです。</br>
              以下の内容に同意された方のみご閲覧下さい</p></br>
@@ -14,7 +13,7 @@
       </div>
     </div>
 
-    <div class="col-12 text-center">
+    <div class="col-12 text-center mt-5">
       <%=link_to  "サイトへ行く", top_path, class: "btn btn-lg btn-primary", checked:false %>
     </div>
   </div>
