@@ -1,12 +1,12 @@
 @use '~bootstrap/scss/bootstrap';
 
-// .main-container {
-//   display: table;
-//   background-image: url("../images/back_image.jpg");
-//   background-color:rgba(255,255,255,0.4);
-//   background-blend-mode:lighten;
-//   background-size: 100% 100%;
-// }
+.main-container {
+  display: table;
+  background-image: url("../images/back_image.png");
+  background-color:rgba(255,255,255,0.4);
+  background-blend-mode:lighten;
+  background-size: cover;
+}
 
 
 // タブ切り替え

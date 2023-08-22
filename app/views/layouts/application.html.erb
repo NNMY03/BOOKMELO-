@@ -12,12 +12,11 @@
 
   <body>
     <%= render 'layouts/header' %>
-      <main class="mt-5">
+      <main>
         <%= flash[:notice] %>
          <div class="d-flex justify-content-center mb-2" >
          <%= yield %>
       </main>
     <%= render 'layouts/footer' %>
-    <%= link_to "Login", "", class: "btn btn-primary" %>
   </body>
 </html>
