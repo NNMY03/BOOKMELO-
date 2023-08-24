@@ -39,16 +39,13 @@
                       <% else %>
                        <td><%= button_to '読みたい', post_favorites_path(post.id), method: :post %></td>
                       <% end %>
-                    <% else admin_signed_in? %>
-                      <%= form_with model: post do |f| %>
-                        <td><%= f.label :posted_status, "公開", value: false %>
-                        <%= f.radio_button :posted_status, 'false' %>
-                        <%= f.label :posted_status, "非公開", value: true %>
-                        <%= f.radio_button :posted_status, 'true' %>
-                        <%= f.submit "設定" %>
+                        <td><% else admin_signed_in? %>
+                        <%= post.label :posted_status, "公開", value: false %>
+                        <%= post.radio_button :posted_status, 'false' %>
+                        <%= post.label :posted_status, "非公開", value: true %>
+                        <%= post.radio_button :posted_status, 'true' %>
                       <% end %>
                         </td>
-                    <% end %>
                 </tr>
               <% end %>
             </tbody>

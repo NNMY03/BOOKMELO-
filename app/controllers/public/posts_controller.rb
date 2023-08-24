@@ -94,7 +94,7 @@ class Public::PostsController < ApplicationController
 
     # メモ機能
     # 空のものを取得しない
-    @postmemo = Post.where(customer_id: current_customer.id).where.not(memo: [nil, ''])
+    @postmemo = Post.where(customer_id: current_customer.id).where.not(memo: [nil, '']).page(params[:paage])
 
     # タグカウント数
     @excitement_count = Post.count_posts_with_tag(@posts, "＃感動した")

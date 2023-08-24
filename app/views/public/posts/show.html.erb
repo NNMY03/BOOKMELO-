@@ -61,8 +61,9 @@
                  </td>
                  <% end %>
                   <% else admin_signed_in? %>
-                    <%= form_with model: @posting, method: :put do |f| %>
-                      <td><%= f.label :posted_status, "公開", value: false %>
+                      <td>
+                       <%= form_with model: @posting, method: :put do |f| %>
+                         <%= f.label :posted_status, "公開", value: false %>
                          <%= f.radio_button :posted_status, 'false' %>
                          <%= f.label :posted_status, "非公開", value: true %>
                          <%= f.radio_button :posted_status, 'true' %>
