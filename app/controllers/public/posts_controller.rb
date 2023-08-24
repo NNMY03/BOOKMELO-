@@ -49,28 +49,32 @@ class Public::PostsController < ApplicationController
     #   @month_record = @posts.group("strftime('%Y%m',posts.reading_finish)").count #2023/03/25
     # end
     # [Fri, 18 Aug 2023, Sat, 19 Aug 2023, Thu, 10 Aug 2023, Fri, 18 Aug 2023, Thu, 17 Aug 2023, Wed, 16 Aug 2023]
-    reading_finish = @posts.pluck(:reading_finish)
+    reading_finish = @posts&.pluck(:reading_finish)
     # ["202308", "202308", "202308", "202308", "202308", "202308", "202307"]
     month_records = reading_finish.map { |rf| rf.strftime("%Y%m") }
     # {"202308"=>6, "202307"=>1}
     month_record = month_records.tally
     # 2
-    if month_record.keys.count < 5
-      # 3
-      num = 5 - month_record.keys.count
-      # [["202307", 1], ["202308", 6]]
-      sorted_month_record = month_record.sort_by(&:first)
-      # ["202307", 1]
-      sorted_month_record_first = sorted_month_record.first
-      # "202307"
-      month = sorted_month_record_first.first
-      # 3回まわす、nには0からindexがはじまる
-      num.times do |n|
-        n += 1
-        # "202306"(１回目)
-        mon = Date.strptime(month, "%Y%m").months_ago(n).strftime("%Y%m")
-        # {"202308"=>6, "202307"=>1, "202306"=>0}(１回目)
-        month_record[mon] = 0
+    
+    if @posts.nil?
+         @posts = "0"
+      unless month_record.keys.count < 5
+        # 3
+        num = 5 - month_record.keys.count
+        # [["202307", 1], ["202308", 6]]
+        sorted_month_record = month_record.sort_by(&:first)
+        # ["202307", 1]
+        sorted_month_record_first = sorted_month_record.first
+        # "202307"
+        month = sorted_month_record_first.first
+        # 3回まわす、nには0からindexがはじまる
+        num.times do |n|
+          n += 1
+          # "202306"(１回目)
+          mon = Date.strptime(month, "%Y%m").months_ago(n).strftime("%Y%m")
+          # {"202308"=>6, "202307"=>1, "202306"=>0}(１回目)
+          month_record[mon] = 0
+        end
       end
     end
 

@@ -1,5 +1,13 @@
 @use '~bootstrap/scss/bootstrap';
 
+// .sign_up {
+// display: contents;
+// }
+
+.field_with_errors {
+  display: contents;
+}
+
 .main-container {
   display: table;
   background-image: url("../images/back_image.png");

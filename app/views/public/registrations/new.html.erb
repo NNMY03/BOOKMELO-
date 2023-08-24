@@ -10,7 +10,7 @@
           </p>
     </div>
     
-    <div class="col-6 text-center pt-5">
+    <div class="sign_up col-6 text-center pt-5">
       <h2>新規登録</h2>
     　　  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
      　　　  <%= render "public/shared/error_messages", resource: resource %>
@@ -22,6 +22,7 @@
        　    <%= f.label :email, 'メールアドレス' %><br/>
        　    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
        　  </div>
+       　  
        　  <div class="field">
        　    <%= f.label :age, '年齢' %><br/>
        　    <%= f.select :age, Customer.ages.keys.map{|k| [I18n.t("enums.customer.age.#{k}"), k]}, class: "prefecture-select", include_blank: "選択して下さい" %>
@@ -35,6 +36,7 @@
             <%= f.radio_button :gender, Customer.genders.key(2) %>
             <%= f.label :gender, Customer.genders_i18n[:gender_normal], value: Customer.genders.key(0) %>
           </div>
+          
           <div class="field">
             <%= f.label :password, 'パスワード' %>
             <% if @minimum_password_length %>

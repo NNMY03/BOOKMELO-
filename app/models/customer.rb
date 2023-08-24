@@ -4,6 +4,10 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
  
+  validates :name, uniqueness: true
+  validates :age, presence: true
+  validates :gender, presence: true
+ 
 # 楽天API中間テーブル 
  has_many :posts, dependent: :destroy
  has_many :books, through: :posts
@@ -14,14 +18,14 @@ class Customer < ApplicationRecord
 # 通報機能
   has_many :reports
   
-# customer　image画面
- has_one_attached :image
- 
- # 退会済みユーザーをはじく 
+  # 退会済みユーザーをはじく 
  def active_for_authentication?
   super && (self.is_deleted == false)
  end
   
+# customer　image画面
+ has_one_attached :image
+ 
  def get_profile_image(height, width)
    unless image.attached?
     file_path = Rails.root.join('app/assets/images/no_image.png')

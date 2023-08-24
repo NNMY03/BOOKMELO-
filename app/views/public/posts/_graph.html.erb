@@ -1,6 +1,6 @@
-  <div class="row">
+  <div class="row my-3">
     <div class="col-12">
-      <h3>投稿数の前日比・前週比</h3>
+      <h3>読了カウント</h3>
     </div>
   </div>
 
@@ -8,8 +8,8 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>今週の投稿数</th>
-      <th>前週の投稿数</th>
+      <th>今週の読了数</th>
+      <th>前週の読了数</th>
     </tr>
   </thead>
   <tbody>
@@ -20,7 +20,7 @@
   </tbody>
 </table>
 
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-12">
       <h3>読書傾向</h3>
     </div>
@@ -49,25 +49,29 @@
   </tbody>
 </table>
 
-<canvas id="myChart" width="200" height="100"> </canvas>
-
-<script>
-    var ctx = document.getElementById("myChart").getContext('2d');
-    var myChart = new Chart(ctx, {
+<div class="row mt-5">
+  <div class="col-12">
+    <canvas id="myChart" width="200" height="100"> </canvas>
+      <script>
+         var ctx = document.getElementById("myChart").getContext('2d');
+         var myChart = new Chart(ctx, {
         // # 'bar'でグラフタイプを縦棒グラフに指定
-        type: 'bar',
-        data: {
+          type: 'bar',
+          data: {
           // # 横軸にとるデータ(今回は投稿日付)を埋め込む
             labels: <%= chartlabels %>,
             datasets: [{
                 label: "月投稿数",
-                // # 縦軸にとるデータ(今回は投稿数)を埋め込む
+                // <!--# 縦軸にとるデータ(今回は投稿数)を埋め込む-->
                 data: <%= chartdatas %>,
                 backgroundColor: 'rgba(255, 80, 120, 1.0)',
                 borderColor: 'rgba(255, 80, 120, 1.0)',
                 fill: false
-            }]
-        },
-    });
-</script>
+                      }]
+               },
+          });
+      </script>
+    </div>
+  </div>
+
 </div>
