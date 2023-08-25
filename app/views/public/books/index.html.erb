@@ -14,11 +14,11 @@
               <thead class="table-hover">
                 <tr>
                   <th style="width: 20%"></th>
-                  <th style="width: 20%">タイトル</th>
-                  <th style="width: 20%">著者</th>
+                  <th style="width: 10%">タイトル</th>
+                  <th style="width: 10%">著者</th>
                   <th style="width: 10%">読了日</th>
-                  <th style="width: 20%">レビュー</th>
-                  <th style="width: 10%">読みたい</th>
+                  <th style="width: 30%">レビュー</th>
+                  <th style="width: 20%">読みたい</th>
                 </tr>
               </thead>
             <tbody>
@@ -39,19 +39,15 @@
                       <% else %>
                        <td><%= button_to '読みたい', post_favorites_path(post.id), method: :post %></td>
                       <% end %>
-                        <td><% else admin_signed_in? %>
-                        <%= post.label :posted_status, "公開", value: false %>
-                        <%= post.radio_button :posted_status, 'false' %>
-                        <%= post.label :posted_status, "非公開", value: true %>
-                        <%= post.radio_button :posted_status, 'true' %>
-                      <% end %>
-                        </td>
+                    <% else admin_signed_in? %>
+                       <td><%= post.posted_status ? '非公開' : '公開中' %></td>
+                    <% end %>
+                        
                 </tr>
               <% end %>
             </tbody>
           </table>
         <%= paginate @posts %>
-      <!--< end %>-->
     </div>
   </div>
 </div>

@@ -17,13 +17,24 @@
 }
 
 .main-visual {
+  background: inherit;
   text-align: left;
+  position: relative;
   background-image: url("../images/cover.jpg");
-  background-color:rgba(255,255,255,0.4);
-  background-blend-mode:lighten;
   background-size: cover;
 }
 
+.filter {
+  position: static;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.example {
+  transition: 0.3s;
+}
+.example:hover {
+  filter: brightness(60%) blur(3px);
+}
 
 // タブ切り替え
 .tab {
