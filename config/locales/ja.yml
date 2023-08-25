@@ -6,6 +6,10 @@ ja:
         password: 'パスワード'
         password_confirmation: 'パスワード(確認用）'
         name: '名前'
+        
+      post:
+        reading_finish: "読了日"
+        tag_ids: "感情タグ"
   enums:
       report:
         status:

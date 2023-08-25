@@ -3,11 +3,12 @@ class Public::HomesController < ApplicationController
   end
 
   def attention
-    @home = Home.new
-    
   end
-end
-
-def home_params
-  params.require(:home).permit(:attention)
+  
+  def description
+  end
+  
+  def review
+  end
+  
 end

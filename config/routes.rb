@@ -25,6 +25,8 @@ devise_for :customers, skip: [:passwords], controllers: {
   scope module: :public do
     root to: 'homes#attention'
     get '/top' => 'homes#top', as: 'top'
+    get '/top/description' => 'homes#description'
+    get '/top/review' => 'homes#review'
 
     # 会員画面
     get   "customers/confirm_withdraw"     => "customers#confirm_withdraw"
