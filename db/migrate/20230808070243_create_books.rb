@@ -8,7 +8,7 @@ class CreateBooks < ActiveRecord::Migration[6.1]
       t.string  :img_small
       t.string  :img_big
       t.string  :rakuten_url
-      t.string  :item_caption
+      t.text  :item_caption
       t.string  :book_genre_id
       t.boolean :book_status, null: false, default: "false"
 
