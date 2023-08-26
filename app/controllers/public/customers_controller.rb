@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :is_matching_login_customer, only: [:edit, :update]
   before_action :set_post, only: [:show]
 
   def show
@@ -13,10 +14,12 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
+    is_matching_login_customer
     @customer = current_customer
   end
 
   def update
+    is_matching_login_customer
     @customer = current_customer
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
@@ -48,6 +51,14 @@ end
   def customer_params
     params.require(:customer).permit(:name, :email, :age, :is_deleted, :gender, :introduction, :image, :comment, :memo)
   end
+  
+  def is_matching_login_customer
+     customer = Customer.find(params[:id])
+    unless customer.id == current_customer.id
+      redirect_to books_path
+    end
+  end
+
 
 
 end

@@ -1,7 +1,5 @@
 class ApplicationController < ActionController::Base
 
-  # ログインしてない場合
-
   def after_sign_in_path_for(resource)
     case resource
       when Customer

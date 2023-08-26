@@ -1,18 +1,5 @@
 class Public::PostsController < ApplicationController
-
-   def edit
-    @posting = Post.find(params[:id])
-   end
-
-  def update
-      @posting = Post.find(params[:id])
-    if @posting.update(post_params)
-      flash[:notice] = "記録の編集が完了しました"
-      redirect_to post_path(@posting)
-    else
-      render :edit
-    end
-  end
+before_action :is_matching_login_customer, only: [:edit, :update]
 
   def new
     @book = Book.find(params[:book_id])
@@ -39,7 +26,7 @@ class Public::PostsController < ApplicationController
 
 
   def index
-    @posts = current_customer.posts.posted_status.order(created_at: :desc).page(params[:page])
+    @posts = current_customer.posts.order(created_at: :desc).page(params[:page])
     # 月別集計
     # 本番環境のみの処理
     # if Rails.env.production?
@@ -49,15 +36,15 @@ class Public::PostsController < ApplicationController
     #   @month_record = @posts.group("strftime('%Y%m',posts.reading_finish)").count #2023/03/25
     # end
     # [Fri, 18 Aug 2023, Sat, 19 Aug 2023, Thu, 10 Aug 2023, Fri, 18 Aug 2023, Thu, 17 Aug 2023, Wed, 16 Aug 2023]
-    reading_finish = @posts&.pluck(:reading_finish)
+    reading_finish = @posts.pluck(:reading_finish)
     # ["202308", "202308", "202308", "202308", "202308", "202308", "202307"]
     month_records = reading_finish.map { |rf| rf.strftime("%Y%m") }
     # {"202308"=>6, "202307"=>1}
     month_record = month_records.tally
     # 2
     
-    if @posts.nil?
-         @posts = "0"
+    if month_record.nil?
+        month_record = "0"
       unless month_record.keys.count < 5
         # 3
         num = 5 - month_record.keys.count
@@ -108,6 +95,23 @@ class Public::PostsController < ApplicationController
   def show
     @posting = Post.find(params[:id])
   end
+  
+ def edit
+   is_matching_login_customer
+   @posting = Post.find(params[:id])
+ end
+
+  def update
+     is_matching_login_customer
+      @posting = Post.find(params[:id])
+    if @posting.update(post_params)
+      flash[:notice] = "記録の編集が完了しました"
+      redirect_to post_path(@posting)
+    else
+      render :edit
+    end
+  end
+
 
   private
 
@@ -115,5 +119,11 @@ class Public::PostsController < ApplicationController
     params.require(:post).permit(:reading_finish, :comment, :star, :memo, :book_id, :posted_status, :name, tag_ids:[])
   end
 
+  def is_matching_login_customer
+     customer = Customer.find(params[:id])
+    unless customer.id == current_customer.id
+      redirect_to books_path
+    end
+  end
 
 end
