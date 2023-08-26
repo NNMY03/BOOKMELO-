@@ -14,9 +14,21 @@
      </div>
     </div>
 
-      <div class="col-12 text-center my-5">
-        <%=link_to  "サイトへ行く", top_path, class: "example btn btn-lg btn-primary", checked:false %>
+      <div class="row ">
+        <div class="col-6">
+        <%=link_to  "新規登録", new_customer_registration_path, class: "example btn btn-lg btn-primary", checked:false %>
       </div>
+      
+      <div class="col-6">
+        <%=link_to  "ログイン", new_customer_session_path, class: "example btn btn-lg btn-primary", method: :get, checked:false %>
+      </div>
+      </div>
+
+      
+      <div class="col-12">
+        <%=link_to  "ゲストログイン（閲覧用）", customers_guest_sign_in_path, class: "example btn btn-lg btn-primary", method: :post %>
+      </div>
+
 
   </div>
 </div>

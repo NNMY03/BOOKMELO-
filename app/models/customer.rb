@@ -37,7 +37,22 @@ class Customer < ApplicationRecord
  def favorites?(post)
   favorites.exists?(post_id: post.id)
  end
+ 
+ # ゲストログイン
+ GUEST_CUSTOMER_EMAIL = "guest@example.com"
+ 
+def self.guest
+  find_or_create_by!(email: GUEST_CUSTOMER_EMAIL) do |customer|
+    customer.password = SecureRandom.urlsafe_base64
+    customer.name = "ゲスト"
+    customer.age = 2
+    customer.gender = 2
+  end
+end
 
+def guest_user?
+  email == GUEST_CUSTOMER_EMAIL
+end
 
 # 年齢セレクトボックス
 enum age: { ones:0, twos:1, trees:2, fours:3, fives:4, sixs:5, sevens:6, eightas:7 }

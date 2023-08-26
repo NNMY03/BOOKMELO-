@@ -1,6 +1,7 @@
 class Public::CustomersController < ApplicationController
   before_action :is_matching_login_customer, only: [:edit, :update]
   before_action :set_post, only: [:show]
+  before_action :ensure_guest_user, only: [:edit]
 
   def show
     @customer = current_customer
@@ -14,6 +15,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
+    ensure_guest_user
     is_matching_login_customer
     @customer = current_customer
   end
@@ -55,10 +57,16 @@ end
   def is_matching_login_customer
      customer = Customer.find(params[:id])
     unless customer.id == current_customer.id
-      redirect_to books_path
+      redirect_to books_path, notice: "新規登録が必要です。"
     end
   end
-
-
+  
+  def ensure_guest_user
+      customer = Customer.find(params[:id])
+    if guest_user?
+      redirect_to customer_path(current_customer) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+    end
+  end
+  
 
 end

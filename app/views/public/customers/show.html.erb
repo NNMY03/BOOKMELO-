@@ -11,9 +11,11 @@
         <tr style="width: 50%">
           <th><%= image_tag @customer.get_profile_image(250,200) %></th>
         </tr>
+          <% unless @customer.guest_user? %>
         <tr style="width: 30%">
-          <th><%= link_to "編集する", edit_customer_path(@customer), class:"btn btn-primary"%></th>
+          <th><%= link_to "編集する", edit_customer_path(@customer), class:"btn btn-border"%></th>
         </tr>
+          <% end %>
       </table>
     </div>
 
@@ -21,8 +23,10 @@
     <div class="col-8">
       <h3>　<%= @customer.name %>　さん</h3>
           <p class="text-right">
-            <%= link_to "記録する", books_search_path, class:"btn btn-primary"%>
-            <%= link_to "読了一覧", posts_path(current_customer), class:"btn btn-primary"%>
+          <% unless @customer.guest_user? %>
+            <%= link_to "記録する", books_search_path, class:"btn btn-border-shadow btn-border-shadow--color2 ml-4"%>
+            <%= link_to "読了一覧", posts_path(current_customer), class:"btn btn-border-shadow btn-border-shadow--color2"%>
+          <% end %>
           </p>
         <table class='table caption-top'>
           <tr style="width: 50%">
@@ -50,8 +54,8 @@
   
 <div class="card-list-container my-5">
   <div class="row card w-50 mx-auto mt-4 shadow-lg text-center">
-  <div class='col-12'>
-    <h3 class="my-3">最近の読書</h3>
+  <div class='col-12 my-5'>
+    <h3 class="pb-5">最近の読書</h3>
       <% if @customer.posts.count == 0 %>
         <td><storng>まだ投稿がありません</storng></td>
           <% else %>
