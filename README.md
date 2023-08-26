@@ -1,4 +1,5 @@
 # BOOKMELO
+![logo](https://github.com/NNMY03/BOOKMELO-/assets/135219119/29616e02-1963-40a1-bc1d-5e57aae9509f)
 * * *
 ## サイト概要
 ### サイトテーマ
@@ -28,7 +29,8 @@
 <!--どのような時に使うのかの状況を記載すること-->
 ​
 ## 設計書
-
+###
+![BOOKMELO](https://github.com/NNMY03/BOOKMELO-/assets/135219119/1768bba4-13ae-410f-8d39-bccb2a1c180a)
 <!--テーマを設定・提出する時点では不要です-->
 ​
 ## 開発環境
