@@ -32,7 +32,7 @@
 ### ER図
 ![BOOKMELO](https://github.com/NNMY03/BOOKMELO-/assets/135219119/1768bba4-13ae-410f-8d39-bccb2a1c180a)
 ### アプリケーション詳細設計
-<img width="660" alt="アプリケーション詳細設計" src="https://github.com/NNMY03/BOOKMELO-/assets/135219119/c200759b-04d4-4025-9d4c-9a835f55d6cb">
+<img width="660" alt="アプリケーション詳細設計" src="https://github.com/NNMY03/BOOKMELO-/assets/135219119/c200759b-04d4-4025-9d4c-9a835f55d6cb"></br
 <!--テーマを設定・提出する時点では不要です-->
 ​
 ## 開発環境
