@@ -1,6 +1,4 @@
 class Public::PostsController < ApplicationController
-before_action :is_matching_login_customer, only: [:edit, :update]
-
   def new
     @book = Book.find(params[:book_id])
     @posting = Post.new
@@ -97,12 +95,10 @@ before_action :is_matching_login_customer, only: [:edit, :update]
   end
   
  def edit
-   is_matching_login_customer
    @posting = Post.find(params[:id])
  end
 
   def update
-     is_matching_login_customer
       @posting = Post.find(params[:id])
     if @posting.update(post_params)
       flash[:notice] = "記録の編集が完了しました"
@@ -117,13 +113,6 @@ before_action :is_matching_login_customer, only: [:edit, :update]
 
   def post_params
     params.require(:post).permit(:reading_finish, :comment, :star, :memo, :book_id, :posted_status, :name, tag_ids:[])
-  end
-
-  def is_matching_login_customer
-     customer = Customer.find(params[:id])
-    unless customer.id == current_customer.id
-      redirect_to books_path
-    end
   end
 
 end

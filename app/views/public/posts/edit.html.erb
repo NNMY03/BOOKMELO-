@@ -9,7 +9,7 @@
     </div>
     
      <%= render "star", posting: posting %>
-     
+
     <div class="form-group">
       <%= posting.label "感情タグ" %>
         <%= posting.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
