@@ -1,4 +1,5 @@
 class Public::BooksController < ApplicationController
+require 'rakuten_web_service'
 
   def search
     #検索モデル
