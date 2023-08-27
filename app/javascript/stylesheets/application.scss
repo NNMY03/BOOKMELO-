@@ -4,8 +4,20 @@
 // display: contents;
 // }
 
-.field_with_errors {
-  display: contents;
+h1, h2, h3 {
+ font-family: 'Zen Kurenaido', sans-serif;
+ font-family: 'Zen Old Mincho', serif;
+}
+
+body {
+background-color:rgba(186,217,232,0.2);
+}
+
+.flash {
+ background-color:rgba(163,190,204,0.3);
+ font-family: 'Zen Kurenaido', sans-serif;
+ font-family: 'Zen Old Mincho', serif;
+
 }
 
 .main-container {
@@ -24,20 +36,38 @@
   background-size: cover;
 }
 
+.post-new {
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.name_image {
+ display: inline-block;
+ text-align: left;
+ border-radius: 50%; /* 角丸半径を50%にする(=円形にする) */
+ background-position: center center; /* 横長画像の中央を基準に表示 */
+ border: solid 1px #777777; /* 色：グレー */
+}
+
+.name {
+  font-size: 40px;
+}
+
 .top-list {
   padding: 20px 0;
 }
 
 .filter {
-  position: static;
-  background-color: rgba(0,0,0,0.5);
+ position: static;
+ background-color: rgba(0,0,0,0.5);
 }
 
 .example {
-  transition: 0.3s;
+ transition: 0.3s;
 }
 .example:hover {
-  filter: brightness(60%) blur(3px);
+ filter: brightness(60%) blur(3px);
 }
 
 .withdraw-main {
@@ -122,11 +152,11 @@ html {
 //   padding: 30px;
 // }
 
-.btn,
-a.btn,
+.btn-customer,
+.btn-customer,
 button.btn {
-  font-size: 1.6rem;
-  font-weight: 700;
+  font-size: 1.0rem;
+  font-weight: 70;
   line-height: 1.5;
   position: relative;
   display: inline-block;
@@ -146,13 +176,13 @@ button.btn {
   border-radius: 0.5rem;
 }
 
-a.btn-border-shadow {
+.btn-border-shadow {
   padding: calc(1.5rem - 12px) 3rem 1.5rem;
 
   background: #fff;
 }
 
-a.btn-border-shadow:before {
+.btn-border-shadow:before {
   position: absolute;
   top: -6px;
   left: -6px;
@@ -168,20 +198,20 @@ a.btn-border-shadow:before {
   border-radius: 0.5rem;
 }
 
-a.btn-border-shadow:hover {
+.btn-border-shadow:hover {
   padding: calc(1.5rem - 6px) 3rem;
 }
 
-a.btn-border-shadow:hover:before {
+.btn-border-shadow:hover:before {
   top: 0;
   left: 0;
 }
 
-a.btn-border-shadow--color2 {
+.btn-border-shadow--color2 {
   border-radius: 100vh;
 }
 
-a.btn-border-shadow--color2:before {
+.btn-border-shadow--color2:before {
   border-radius: 100vh;
   -webkit-box-shadow: 3px 3px 0 #78e5e5;
   box-shadow: 3px 3px 0 #78e5e5;

@@ -1,15 +1,15 @@
 <div class='container my-5'>
   <div class='row'>
-    <div class="col-12">
-      <h1>User Home</h1>
+    <div class="col-12 my-3">
+      <h1>My Page</h1>
     </div>
   </div>
 
   <div class='row'>
-    <div class="col-4">
+    <div class="col-4 text-center">
       <table class='table caption-top'>
         <tr style="width: 50%">
-          <th><%= image_tag @customer.get_profile_image(250,200) %></th>
+          <th><%= image_tag @customer.get_profile_image(250,200), class: "name_image" %></th>
         </tr>
           <% unless @customer.guest_user? %>
         <tr style="width: 30%">
@@ -21,22 +21,24 @@
 
 
     <div class="col-8">
-      <h3>　<%= @customer.name %>　さん</h3>
-          <p class="text-right">
+      <div class="col d-flex justify-content-between">
+        <div class="name">
+          <%= @customer.name %>　さん</div>
           <% unless @customer.guest_user? %>
-            <%= link_to "記録する", books_search_path, class:"btn btn-border-shadow btn-border-shadow--color2 ml-4"%>
-            <%= link_to "読了一覧", posts_path(current_customer), class:"btn btn-border-shadow btn-border-shadow--color2"%>
+            <%= link_to "記録する", books_search_path, class:"btn btn-customer btn-border-shadow btn-border-shadow--color2 ml-4"%>
+            <%= link_to "読了一覧", posts_path(current_customer), class:"btn btn-customer btn-border-shadow btn-border-shadow--color2"%>
           <% end %>
-          </p>
-        <table class='table caption-top'>
+        </div>
+        
+        <table class='table caption-top table-light mt-4'>
           <tr style="width: 50%">
             <th>introduction</th>
             <th><%= @customer.introduction %></th>
           </tr>
         </table>
 
-        <table class="table table-bordered table-sm">
-          <thead class="table-light">
+        <table class="table table-border border-3 border-dark table-sm mt-4 table-light">
+          <thead>
             <tr>
               <th style="width: 50%">読了数</th>
               <th style="width: 50%">読みたい</th>

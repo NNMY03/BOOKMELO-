@@ -62,9 +62,9 @@ end
   end
   
   def ensure_guest_user
-      customer = Customer.find(params[:id])
-    if guest_user?
-      redirect_to customer_path(current_customer) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+       @customer = Customer.find(params[:id])
+    if @customer.guest_user?
+       redirect_to customer_path(current_customer) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
   

@@ -2,8 +2,9 @@
   <div class="row text-center">
     <%= render '/layouts/errors', obj: @posting %>
   </div>
+  
   <div class="row card w-50 mx-auto mt-4 shadow-lg">
-     <table class="col-12 table　table-sm">
+     <table class="col-12 table table-sm py-3">
        <thead>
          <tr>
            <th style="width: 20%"></th>
@@ -12,7 +13,7 @@
        </thead>
        <tbody>
          <tr>
-          <td><%= image_tag @book.img_big %></td>
+          <td class="text-center pt-5"><%= image_tag @book.img_big %></td>
             <td><%= @book.title %></br>
                 著者：<%= @book.author %></br>
                 <div>出版社：<%= @book.publisher %></div></br>
@@ -22,7 +23,9 @@
        </tbody>
      </table>
   </div>
-<div class="col-12">
+  
+<div class="roW my-5">
+<div class="col-6 post-new">
   <%= form_with model: @posting, url: posts_path, method: :post, local:true do |posting| %>
    <%= posting.hidden_field :book_id, value: @book.id %>
     <div class="form-group">
@@ -35,7 +38,7 @@
     <div class="form-group">
       <%= posting.label "感情タグ" %>
         <%= posting.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-          <%= tag.check_box class:"form-contro5" do %>
+          <%= tag.check_box class:"form-contro5 mt-4" do %>
             <%= tag.check_box + tag.text %>
           <% end %>
         <%= tag.label {tag.text} %>
@@ -44,18 +47,19 @@
 
     <div class="form-group">
       <%= posting.label "コメント" %>
-      <%= posting.text_field :comment, class: 'form-control' %>
+      <%= posting.text_area :comment, class: 'form-control' %>
     </div>
 
     <div class="form-group">
       <%= posting.label "メモ" %>
-      <%= posting.text_field :memo, class: 'form-control' %>
+      <%= posting.text_area :memo, class: 'form-control' %>
     </div>
 
      <div class="form-group">
-      <%= posting.submit class: 'btn btn-success' %>
+      <%= posting.submit class: 'btn btn-border mt-3' %>
      </div>
 
   <% end %>
+</div>
 </div>
 </div>

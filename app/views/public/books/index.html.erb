@@ -6,11 +6,11 @@
   </div>
   
   <div class='col-12'>
-    <h3 class="text-center mb-3">タイムライン</h3>
+    <h2 class="text-center mb-3">Time Line</h2>
       <!--< if @posts.count == 0 %>-->
       <!--  <td><storng>まだ投稿がありません</storng></td>-->
       <!--    < else %>-->
-            <table class="table table-hover text-center">
+            <table class="table table-hover text-center table-light">
               <thead class="table-hover">
                 <tr>
                   <th style="width: 20%"></th>
@@ -33,11 +33,18 @@
                   <td><%= post.book.author %></td>
                   <td><%= post.reading_finish %></td>
 　                <td><%= render "static-rate", posts: post %></td>
+　                
                     <% if customer_signed_in? %>
                       <% if current_customer.favorites?(post) %>
-                       <td><%= button_to '取り消す', post_favorites_path(post.id), method: :delete %></td>
+                       <td><%= link_to post_favorites_path(post.id), method: :delete do %>
+                       <i class="fas fa-book"></i>
+                       <% end %>
+                       </td>
                       <% else %>
-                       <td><%= button_to '読みたい', post_favorites_path(post.id), method: :post %></td>
+                       <td><%= link_to post_favorites_path(post.id), method: :post do %>
+                       <i class="fas fa-book-medical"></i>
+                       <% end %>
+                       </td>
                       <% end %>
                     <% else admin_signed_in? %>
                        <td><%= post.posted_status ? '非公開' : '公開中' %></td>

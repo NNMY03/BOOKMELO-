@@ -1,8 +1,8 @@
 <div class='container mt-5'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      
-  <h2 class="text-center">User info</h2>
+
+  <h2 class="text-center">User Info</h2>
     <%= form_with model: @customer, url: customer_path, method: :patch, local:true do |f| %>
       <div class="form-group">
         <%= f.label :name %>
@@ -16,11 +16,11 @@
         <%= f.label :email %></br>
         <%= f.email_field :email, class: "form-control-email" %>
       </div>
-　    <div class="field">
+      <div class="field">
         <%= f.label :age, '年齢' %><br/>
         <%= f.select :age, Customer.ages.keys.map{|k| [I18n.t("enums.customer.age.#{k}"), k]}, class: "prefecture-select", include_blank: "選択して下さい" %>
-       </div>
-       <div class="field">
+      </div>
+      <div class="field">
         <%= f.label :gender, '性別' %><br/>
         <%= f.radio_button :gender, Customer.genders.key(0) %>
         <%= f.label :gender, Customer.genders_i18n[:gender_male], value: Customer.genders.key(0) %>
@@ -28,25 +28,18 @@
         <%= f.label :gender, Customer.genders_i18n[:gender_female], value: Customer.genders.key(0) %>
         <%= f.radio_button :gender, Customer.genders.key(2) %>
         <%= f.label :gender, Customer.genders_i18n[:gender_normal], value: Customer.genders.key(0) %>
-       </div>
-       <div class="form-group">
+      </div>
+      <div class="form-group">
         <%= f.label :introduction %>
         <%= f.text_area :introduction, class: "form-control introduction" %>
-       </div>
-       <div class="form-group">
-        <%= f.submit '登録する', class: 'btn btn-secondary' %>
-       </div>
-    <% end %>
-    
-        <!--退会ボタン-->
-    <div class="row my-5">
-      <div class="col"></div>
-      <div>
-        <%= link_to "退会する", customers_confirm_withdraw_path, class: "btn btn-sm btn-danger px-5" %>
-      </div>  
-    </div>
+      </div>
 
-    
-  </div>
- </div>
+      <div class="form-group d-flex justify-content-between">
+        <%= f.submit '登録する', class: 'btn btn-secondary' %>
+        <%= link_to "退会する", customers_confirm_withdraw_path, class: "btn btn-danger px-5" %>
+      </div>
+      <% end %>
+      </div>
+   </div>
 </div>
+

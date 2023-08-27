@@ -1,10 +1,11 @@
 class Public::FavoritesController < ApplicationController
+  before_action :authenticate_customer!
   
   def create
     post = Post.find(params[:post_id])
     favorite = current_customer.favorites.new(post_id: post.id)
      favorite.save
-     redirect_to posts_path
+     redirect_to books_path
   end
   
   def destroy
