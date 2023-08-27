@@ -27,8 +27,8 @@
   </div>
 
   <div class="row card w-50 mx-auto mt-4 shadow-lg">
-      <div class="col-12">
-         <h2>レビュー</h2>
+      <div class="col-12 mt-5">
+         <h2 class="mb-3 text-center">レビュー</h2>
             <% if @book.posts.count == 0 %>
              <td><storng>レビューはまだありません</storng></td>
             <% else %>
@@ -36,31 +36,27 @@
          <% @book.posts.each do |posts| %>
            <tbody>
              <tr>
-               <td>
-                 <%= image_tag posts.customer.get_profile_image(100,100) %>
+               <td class="text-center pt-3" style="width: 10%">
+                 <%= image_tag posts.customer.get_profile_image(50,50), class: "name_image" %>
                  <%= posts.customer.name %>
                </td>
-               <td>
-                 <%= posts.comment %>
-               </td>
-               <td>
+               <td style="width: 60%">
                  <%= render "static-rate", posts: posts %>
-               </td>
-               <td>
-                 <% posts.tags.each do |f| %>
+                   <% posts.tags.each do |f| %>
                    <%= f.name %>
-                 <% end %>
+                 <% end %></br>
+                 <%= posts.comment %>
                </td>
                <td>
                  <%= link_to new_post_report_path(posts),class: "btn brn-sm", method: :get do %>
                    <i class="fas fa-exclamation-circle"></i>
                  <% end %>
                </td>
-               <td>
+               <td style="width: 30%">
                <% if customer_signed_in? %>
                  <% if posts.customer == current_customer %>
-                     <%= link_to "投稿削除", post_path(posts), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger float-end" %>
-                     <%= link_to '記録編集', edit_post_path(posts), class: "btn btn-sm btn-success" %>
+                     <%= link_to "投稿削除", post_path(posts), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-border btn-sm float-end" %>
+                     <%= link_to '記録編集', edit_post_path(posts), class: "btn btn-sm btn-border" %>
                    <% end %>
                    
                <% else admin_signed_in? %>
@@ -72,9 +68,8 @@
                          <%= f.submit "設定" %>
                        <% end %>
                       </td>
-                   <% end %>
-           </td>
-
+                    <% end %>
+               </td>
                </td>
              </tr>
            </tbody>
