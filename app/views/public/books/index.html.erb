@@ -4,7 +4,7 @@
         <%= render 'public/posts/tag_search', tags: @tags %>
 
   </div>
-  
+
   <div class='col-12'>
     <h2 class="text-center mb-3">Time Line</h2>
       <!--< if @posts.count == 0 %>-->
@@ -13,11 +13,10 @@
             <table class="table table-hover text-center table-light">
               <thead class="table-hover">
                 <tr>
-                  <th style="width: 20%"></th>
-                  <th style="width: 10%">タイトル</th>
-                  <th style="width: 10%">著者</th>
-                  <th style="width: 10%">読了日</th>
-                  <th style="width: 30%">レビュー</th>
+                  <th style="width: 20%">投稿者</th>
+                  <th style="width: 20%">タイトル</th>
+                  <th style="width: 20%">著者</th>
+                  <th style="width: 20%">レビュー</th>
                   <th style="width: 20%">読みたい</th>
                 </tr>
               </thead>
@@ -25,23 +24,33 @@
               <% @posts.each do |post| %>
                 <tr>
                   <td>
-                    <%=link_to (post.book) do %>
-                    <%= image_tag post.book.img_big %>
-                    <% end %>
+                    <%= image_tag post.customer.get_profile_image(50,50), class: "name_image" %></br>
+                    <%= post.customer.name %>
                   </td>
-                  <td><%= post.book.title %></td>
+                  <td>
+                    <%=link_to (post.book) do %>
+                    <%= image_tag post.book.img_small %>
+                    <% end %></br>
+                    <%= post.book.title %>
+                    </td>
                   <td><%= post.book.author %></td>
-                  <td><%= post.reading_finish %></td>
-　                <td><%= render "static-rate", posts: post %></td>
-　                
+　                <td>
+　                  <%= render "static-rate", posts: post %><br>
+            　       <% post.tags.each do |f| %>
+      　             <%= f.name %>
+        　　　         <% end %>
+　                </td>
+
                     <% if customer_signed_in? %>
                       <% if current_customer.favorites?(post) %>
                        <td><%= link_to post_favorites_path(post.id), method: :delete do %>
+                       取り消す<br>
                        <i class="fas fa-book"></i>
                        <% end %>
                        </td>
                       <% else %>
                        <td><%= link_to post_favorites_path(post.id), method: :post do %>
+                       読みたい<br>
                        <i class="fas fa-book-medical"></i>
                        <% end %>
                        </td>
@@ -49,7 +58,7 @@
                     <% else admin_signed_in? %>
                        <td><%= post.posted_status ? '非公開' : '公開中' %></td>
                     <% end %>
-                        
+
                 </tr>
               <% end %>
             </tbody>

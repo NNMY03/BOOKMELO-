@@ -3,17 +3,18 @@
     <%= posting.label :star, "レビュー" %>
       <%= posting.hidden_field :star, id: :review_star, class: 'form-control' %>
      <div id="post_raty"></div>
-  
+
   <script>
       $(document).on('turbolinks:load', function() {
         let elem = document.querySelector('#post_raty');
         if (elem == null) return;
-  
+
         elem.innerHTML = ""
-        let opt = {  
+        let opt = {
           starOn: "<%= asset_path('star-on.png') %>",
           starOff: "<%= asset_path('star-off.png') %>",
           starHalf: "<%= asset_path('star-half.png') %>",
+          score: "<%= post.star %>",
           scoreName: 'post[star]',
         };
         raty(elem, opt);
