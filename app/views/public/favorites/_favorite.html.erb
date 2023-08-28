@@ -1,11 +1,13 @@
 <% if current_customer.favorites?(post) %>
-  <%= link_to post_favorites_path(post.id), method: :delete, remote: true do %>
-        <i class="fas fa-cookie-bite"></i>
+  <%= link_to post_favorites_path(post.id), method: :delete, remote: true, class: "btn btn-favorite btn-tag btn-tag--ver" do %>
+        <i class="fas fa-book-open"></i>
+        取り消す
       <% end %>
   
 <% else %>
-  <%= link_to post_favorites_path(post.id), method: :post, remote: true do %>
-        <i class="fas fa-cookie"></i>
+  <%= link_to post_favorites_path(post.id), method: :post, remote: true, class: "btn btn-favorite btn-tag btn-tag--ver" do %>
+        <i class="fas fa-book"></i>
+        読みたい
       <% end %>
   
 <% end %>
