@@ -1,16 +1,11 @@
-                      <% if current_customer.favorites?(post) %>
-                       <td><%= link_to post_favorites_path(post.id), method: :delete, remote: true do %>
-                       <i class="fas fa-cookie-bite"></i>
-                       <% end %>
-                       </td>
-                      <% else %>
-                       <td><%= link_to post_favorites_path(post.id), method: :post, remote: true do %>
-                       <i class="fas fa-cookie"></i>
-                       <% end %>
-                       </td>
-                      <% end %>
-                      
-                      
-                      
-                      
-                      
+<% if current_customer.favorites?(post) %>
+  <%= link_to post_favorites_path(post.id), method: :delete, remote: true do %>
+        <i class="fas fa-cookie-bite"></i>
+      <% end %>
+  
+<% else %>
+  <%= link_to post_favorites_path(post.id), method: :post, remote: true do %>
+        <i class="fas fa-cookie"></i>
+      <% end %>
+  
+<% end %>

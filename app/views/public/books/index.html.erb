@@ -10,22 +10,24 @@
       <!--< if @posts.count == 0 %>-->
       <!--  <td><storng>まだ投稿がありません</storng></td>-->
       <!--    < else %>-->
+        <% @posts.each do |post| %>
             <table class="table table-hover text-center table-light">
               <thead class="table-hover">
                 <tr>
                   <th style="width: 20%">投稿者</th>
-                  <th style="width: 20%">タイトル</th>
-                  <th style="width: 20%">著者</th>
+                  <th style="width: 20%"></th>
+                  <th style="width: 20%"></th>
                   <th style="width: 20%">レビュー</th>
                   <th style="width: 20%">読みたい</th>
                 </tr>
               </thead>
+
             <tbody>
-              <% @posts.each do |post| %>
                 <tr>
                   <td>
                     <%= image_tag post.customer.get_profile_image(50,50), class: "name_image" %></br>
-                    <%= post.customer.name %>
+                    <%= post.customer.name %><br>
+                    <%= %>
                   </td>
                   <td>
                     <%=link_to (post.book) do %>
@@ -42,25 +44,21 @@
 　                </td>
 　                
                     <% if customer_signed_in? %>
-                      <% if current_customer.favorites?(post) %>
-                       <td><%= link_to post_favorites_path(post.id), method: :delete do %>
-                       <i class="fas fa-book"></i>
-                       <% end %>
-                       </td>
-                      <% else %>
-                       <td><%= link_to post_favorites_path(post.id), method: :post do %>
-                       <i class="fas fa-book-medical"></i>
-                       <% end %>
-                       </td>
-                      <% end %>
+                    
+                      <td id = 'favorite_buttons_<%= post.id %>'>
+                        <%= render "public/favorites/favorite", post: post, favorite: @favorite %>
+                      </td>
+                    
                     <% else admin_signed_in? %>
                        <td><%= post.posted_status ? '非公開' : '公開中' %></td>
                     <% end %>
                         
                 </tr>
-              <% end %>
             </tbody>
+            
           </table>
+        <% end %>
+
         <%= paginate @posts %>
     </div>
   </div>

@@ -20,11 +20,9 @@
                   <td><%= f.book.title %></td>
                   <td><%= f.book.author %></td>
                    <% post_id = f.id %>
-                      <% if current_customer.favorites?(f) %>
-                       <td><%= button_to '取り消す', post_favorites_path(post_id), method: :delete %></td>
-                      <% else %>
-                       <td><%= button_to '読みたい', post_favorites_path(post_id), method: :post %></td>
-                      <% end %>
+                      <td id = 'favorite_buttons_<%= f.id %>'>
+                        <%= render "public/favorites/favorite", post: f, favorite: @favorite %>
+                      </td>
                   <td><%= link_to "詳細", book_path(f.book), class: "btn btn-primary"%></td>
                 </tr>
               <% end %>
