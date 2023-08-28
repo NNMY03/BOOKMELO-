@@ -11,20 +11,18 @@
              <!--<= label_tag :attention, "不適切な投稿があった場合、投稿を非公開とさせていただく場合があります", required: true %></p></br>-->
              <!--<p class="field text-light"><= check_box_tag :attention %>-->
              <!--<= label_tag :attention, "ハッピーエンドという話の流れが事前にわかってしまうことに気を付けてご閲覧下さい", required: true %></p>-->
-
-             <div class="form-group d-flex justify-content-around m-5">
-        <%=link_to  "新規登録", new_customer_registration_path, class: "example btn btn-lg btn-border", checked:false %>
-        <%=link_to  "ログイン", new_customer_session_path, class: "example btn btn-lg btn-border", method: :get, checked:false %>
-
+             <div class="btn-wrapper col-10 mx-auto my-5">
+               <div class="row">
+                 <%=link_to  "新規登録", new_customer_registration_path, class: "example btn btn-lg btn-border btn-block", checked:false %>
+               </div>
+               <div class="row">
+                 <%=link_to  "ログイン", new_customer_session_path, class: "example btn btn-lg btn-border btn-block my-4", method: :get, checked:false %>
+               </div>
+               <div clas="row">
+                 <%=link_to  "ゲストログイン（閲覧用）", customers_guest_sign_in_path, class: "example btn btn-lg btn-border btn-block", method: :post %>
+               </div>
+             </div>
       </div>
-
-      
-      <div class="col-12">
-        <%=link_to  "ゲストログイン（閲覧用）", customers_guest_sign_in_path, class: "example btn btn-lg btn-border", method: :post %>
-      </div>
-
-     </div>
     </div>
-
   </div>
 </div>

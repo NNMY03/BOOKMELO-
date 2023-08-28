@@ -63,7 +63,7 @@ require 'rakuten_web_service'
     end
 
   def index
-
+    
     # 非公開を含まない
     if customer_signed_in?
     @tags = Tag.all
@@ -72,7 +72,7 @@ require 'rakuten_web_service'
   	   @tag = Tag.find(params[:tag_id])
   	   @posts = @tag.posts.posted_status.page(params[:page])
      end
-
+     
     # 非公開も含む
     else admin_signed_in?
     @tags = Tag.all

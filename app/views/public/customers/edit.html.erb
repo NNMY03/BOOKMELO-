@@ -35,8 +35,9 @@
       </div>
 
       <div class="form-group d-flex justify-content-between">
-        <%= f.submit '登録する', class: 'btn btn-secondary' %>
-        <%= link_to "退会する", customers_confirm_withdraw_path, class: "btn btn-danger px-5" %>
+        <%= f.submit '登録する', class: 'btn btn-border' %>
+        <%= link_to "戻る", customer_path(@customer), class: 'btn btn-border mt-3' %>
+        <%= link_to "退会する", customers_confirm_withdraw_path, class: "btn btn-danger" %>
       </div>
       <% end %>
       </div>

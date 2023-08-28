@@ -5,9 +5,9 @@
 // }
 
 h1, h2, h3 {
- font-family: 'Zen Kurenaido', sans-serif;
- font-family: 'Zen Old Mincho', serif;
+font-family: 'Tilt Prism', cursive;
 }
+
 
 body {
 background-color:rgba(186,217,232,0.2);
@@ -69,7 +69,7 @@ background-color:rgba(186,217,232,0.2);
  background-color: rgba(0,0,0,0.5);
 }
 
-.example {
+.example:before {
  transition: 0.3s;
 }
 .example:hover {
@@ -78,6 +78,10 @@ background-color:rgba(186,217,232,0.2);
 
 .withdraw-main {
   text-align: center;
+}
+
+.favorite-btn {
+ font-family: 'Libre Barcode 39', cursive;
 }
 
 .withdraw {
