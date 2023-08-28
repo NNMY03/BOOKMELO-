@@ -253,7 +253,7 @@ a.btn-favorite  {
 }
 
 a.btn-tag {
-  padding: 1.0rem 3rem 1.0rem 50px;
+  padding: 1.0rem 1rem 1.0rem 30px;
 }
 
 a.btn-tag:before {
@@ -267,7 +267,7 @@ a.btn-tag:before {
 }
 
 a.btn-tag--ver {
-  padding: calc(54px + 1rem) 2rem 1rem 2rem;
+  padding: calc(50px + 1rem) 2rem 1rem 2rem;
   color: #fff;
   border-bottom: 5px solid #99ffff;
   background: #19b5d1;
@@ -298,6 +298,7 @@ a.btn-tag--ver i {
 
 a.btn-tag--ver:hover {
   margin-top: 3px;
+  color: #fff;
   border-bottom: 2px solid #99ffff;
   background: #19b5d1;
 }
