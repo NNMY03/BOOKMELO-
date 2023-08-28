@@ -1,6 +1,6 @@
 <div class="card-list-container py-5">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 text-center">
       <h2>不適切な投稿を報告する</h2>
     </div>
   </div>
@@ -26,16 +26,16 @@
   </div>
 
   <div class="row">
-    <div class="col-12">
+    <div class="col-6 text-center mt-5">
        <h2>報告理由</h2>
     </div>
   </div>
     <div class="row">
-      <div class="col-12">
+      <div class="col-6  post-new">
         <%= form_with model:[@post, @report] do |f| %>
           <div class="form-group">
             <%= f.text_area :reason, rows:'3', class:"form-control" %>
-            <%= f.submit "報告する", "data-confirm" => "本当に報告しますか？", class: "btn btn-sm btn-danger float-end" %>
+            <%= f.submit "報告する", "data-confirm" => "本当に報告しますか？", class: "btn btn-sm btn-danger float-end mt-5" %>
           </div>
         <% end %>
         </div>
