@@ -58,9 +58,9 @@
           <%= posting.text_area :memo, class: 'form-control' %>
         </div>
 
-         <div class="form-group">
+         <div class="form-group d-flex justify-content-between">
           <%= posting.submit class: 'btn btn-border mt-3' %>
-          <%= link_to "戻る" books_path, class: 'btn btn-border mt-3' %>
+          <%= link_to "戻る", books_search_path, class: 'btn btn-border mt-3' %>
          </div>
          
       <% end %>
