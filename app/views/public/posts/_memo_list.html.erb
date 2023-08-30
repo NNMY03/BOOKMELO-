@@ -3,7 +3,7 @@
             <storng>まだメモはありません</storng>
           </div>
             <% else %>
-            <table class="table">
+            <table class="table table-hover text-center table-light">
               <thead>
                 <tr>
                   <th style="width: 20%"></th>
@@ -20,7 +20,7 @@
                   <td><%= post.book.title %></td>
                   <td><%= post.reading_finish %></td>
 　                <td><%= post.memo %></td>
-                  <td><%= link_to "詳細", post_path(post), class: "btn btn-primary"%></td>
+                  <td><%= link_to "詳細", post_path(post), class: "btn btn-border"%></td>
                 </tr>
               <% end %>
             </tbody>
