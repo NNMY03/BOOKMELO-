@@ -9,8 +9,21 @@ font-family: 'Tilt Prism', cursive;
 }
 
 
+footer{
+    /*footerの装飾*/
+  width: 100%;
+  background-color: #fff;
+  padding: 30px 0;
+  position: absolute;/*←絶対位置*/
+  bottom: 0; /*下に固定*/
+}
+
 body {
-background-color:rgba(186,217,232,0.2);
+  background-color:rgba(186,217,232,0.2);
+  min-height: 100vh;
+  position: relative;/*←相対位置*/
+  padding-bottom: 120px;/*←footerの高さ*/
+  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
 
 .flash {
@@ -299,4 +312,24 @@ a.btn-tag--ver:hover {
   color: #fff;
   border-bottom: 2px solid #99ffff;
   background: #19b5d1;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  text-align: center;
+  width: 100%;
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+  
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
 }

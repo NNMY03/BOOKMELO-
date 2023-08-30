@@ -2,7 +2,7 @@
         <% if @favorite_list.count == 0 %>
           <div class="text-center"><storng>まだ登録がありません</storng></div>
             <% else %>
-            <table class="table">
+            <table class="table table-hover text-center table-light">
               <thead>
                 <tr>
                   <th style="width: 20%"></th>
@@ -23,7 +23,7 @@
                       <td id = 'favorite_buttons_<%= f.id %>'>
                         <%= render "public/favorites/favorite", post: f, favorite: @favorite %>
                       </td>
-                  <td><%= link_to "詳細", book_path(f.book), class: "btn btn-primary"%></td>
+                  <td><%= link_to "詳細", book_path(f.book), class: "btn btn-border"%></td>
                 </tr>
               <% end %>
              <% end %>

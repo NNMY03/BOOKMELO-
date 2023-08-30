@@ -66,7 +66,7 @@ require 'rakuten_web_service'
     # 非公開を含まない
     if customer_signed_in?
     @tags = Tag.all
-    @posts = Post.posted_status.order(created_at: :desc).page(params[:page])
+    @posts = Post.posted_status.order(favorite_id: :desc).page(params[:page])
      if params[:tag_id]
   	   @tag = Tag.find(params[:tag_id])
   	   @posts = @tag.posts.posted_status.page(params[:page])

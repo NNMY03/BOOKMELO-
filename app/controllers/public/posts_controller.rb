@@ -75,11 +75,11 @@ class Public::PostsController < ApplicationController
 
     # お気に入り一覧
     favorites = Favorite.where(customer_id: current_customer.id).pluck(:post_id)
-    @favorite_list = Post.where(id: favorites)
+    @favorite_list = Post.where(id: favorites).order(created_at: :desc)
 
     # メモ機能
     # 空のものを取得しない
-    @postmemo = Post.where(customer_id: current_customer.id).where.not(memo: [nil, '']).page(params[:paage])
+    @postmemo = Post.where(customer_id: current_customer.id).where.not(memo: [nil, '']).order(created_at: :desc).page(params[:paage])
 
     # タグカウント数
     @excitement_count = Post.count_posts_with_tag(@posts, "＃感動した")
