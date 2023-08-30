@@ -40,7 +40,7 @@ class Public::PostsController < ApplicationController
     # {"202308"=>6, "202307"=>1}
     month_record = month_records.tally
     # 2
-    
+
     if month_record.nil?
         month_record = "0"
       unless month_record.keys.count < 5
@@ -75,7 +75,7 @@ class Public::PostsController < ApplicationController
 
     # お気に入り一覧
     favorites = Favorite.where(customer_id: current_customer.id).pluck(:post_id)
-    @favorite_list = Post.where(id: favorites).order(favorite_id: :desc)
+    @favorite_list = Post.where(id: favorites).order(created_at: :desc)
 
     # メモ機能
     # 空のものを取得しない
@@ -93,7 +93,7 @@ class Public::PostsController < ApplicationController
   def show
     @posting = Post.find(params[:id])
   end
-  
+
  def edit
    @posting = Post.find(params[:id])
  end
