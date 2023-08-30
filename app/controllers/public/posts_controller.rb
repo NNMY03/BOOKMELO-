@@ -75,7 +75,7 @@ class Public::PostsController < ApplicationController
 
     # お気に入り一覧
     favorites = Favorite.where(customer_id: current_customer.id).pluck(:post_id)
-    @favorite_list = Post.where(id: favorites).order(created_at: :desc)
+    @favorite_list = Post.where(id: favorites).order(favorite_id: :desc)
 
     # メモ機能
     # 空のものを取得しない
