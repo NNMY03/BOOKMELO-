@@ -9,8 +9,8 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tags
 
 # 通報機能
-  has_many :report
-  has_many :customers, through: :report
+  has_many :report ,dependent: :destroy
+  has_many :customers, through: :report, dependent: :destroy
 
 # 投稿制約
   validates :reading_finish, presence: true
@@ -19,10 +19,6 @@ class Post < ApplicationRecord
 # 公開機能
   scope :posted_status, -> {where(posted_status: false)}
   scope :unposted_status, -> {where(posted_status: true)}
-
-# 通報機能
-  has_many :report
-  has_many :customers, through: :report
 
   # 投稿数表示
   scope :today_count, -> {where(created_at: Time.zone.now.all_day)}

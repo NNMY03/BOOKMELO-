@@ -16,7 +16,7 @@ class Customer < ApplicationRecord
  has_many :favorites, dependent: :destroy
  
 # 通報機能
-  has_many :reports
+  has_many :reports, dependent: :destroy
   
   # 退会済みユーザーをはじく 
  def active_for_authentication?
