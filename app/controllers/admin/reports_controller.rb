@@ -1,5 +1,5 @@
 class Admin::ReportsController < ApplicationController
-    before_action :set_report_status, only: [:update]
+    before_action :set_report_status, only: [:update, :destroy]
 
   def index
     @reports = Report.all.order(created_at: "DESC").page(params[:page]).per(10)
@@ -13,7 +13,13 @@ class Admin::ReportsController < ApplicationController
     else
       render :index, alert: "対応ステータスを更新できませんでした"
     end
+  end
 
+
+  def destroy
+    @report = Report.find(params[:id])
+    @report.destroy
+    redirect_to admin_reports_path
   end
 
   private

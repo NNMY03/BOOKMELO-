@@ -16,7 +16,7 @@ devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
     root to: 'homes#top'
     resources :tags, only: [:index, :edit, :show, :create, :destroy, :update]
     resources :customers, only:[:index, :show, :edit, :update]
-    resources :reports, only: [:index, :show, :update]
+    resources :reports, only: [:index, :show, :destroy, :update]
 
   end
 
@@ -42,11 +42,11 @@ devise_for :customers, skip: [:passwords], controllers: {
     resources :customers, only: [:update, :show, :edit]
 
     # 書籍検索
-    get 'books/search', to: "books#search" 
+    get 'books/search', to: "books#search"
     resources :books, only: [:show, :index, :update] do
       resource :posts, only: [:new]
     end
-      
+
     # 投稿
     resources :posts, only: [:index, :create, :show, :edit, :destroy, :update] do
      get :favorites, on: :collection
@@ -55,6 +55,6 @@ devise_for :customers, skip: [:passwords], controllers: {
     end
 
   end
-  
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

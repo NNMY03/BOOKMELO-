@@ -40,7 +40,6 @@ class Public::PostsController < ApplicationController
     # {"202308"=>6, "202307"=>1}
     month_record = month_records.tally
     # 2
-
     if month_record.nil?
         month_record = "0"
       unless month_record.keys.count < 5

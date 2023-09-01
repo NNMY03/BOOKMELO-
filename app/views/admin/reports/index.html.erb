@@ -9,6 +9,7 @@
       <th>会員名</th>
       <th>報告書籍</th>
       <th>報告内容</th>
+      <th></th>
       <th>ステータス</th>
     </tr>
   </thead>
@@ -22,18 +23,21 @@
           <%= report.customer.name %>
         </td>
         <td>
-          <%= link_to post_path(report.post) do %>
+          <!--<= link_to post_path(report.post) do %>-->
             <%= report.post.book.title %>
-          <% end %>
+          <!--< end %>-->
         </td>
         <td>
           <%= report.reason %>
         </td>
         <td>
+          <%= link_to "投稿削除", admin_report_path(report), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
+        </td>
+        <td>
           <% report.status_i18n %>
             <%= form_with model: [:admin, report], method: :put, local: true do |f| %>
               <%= f.select :status, Report.statuses.keys.map {|k| [I18n.t("enums.report.status.#{k}"), k]} %>
-              <%= f.submit "変更" %>
+              <%= f.submit "変更" %></br>
             <% end %>
         </td>
       </tr>
