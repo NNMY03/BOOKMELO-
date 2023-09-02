@@ -62,7 +62,8 @@
                          <%= f.label :posted_status, "非公開", value: true %>
                          <%= f.radio_button :posted_status, 'true' %>
                          <%= f.submit "設定" %>
-                       <% end %>
+                       <% end %></br>
+                       <span class="sentiment-score">コメント感情分析スコア[<%= @posting.score %>]</span>
                       </td>
                    <% end %>
 

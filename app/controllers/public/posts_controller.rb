@@ -8,6 +8,7 @@ class Public::PostsController < ApplicationController
     @book = Book.find(params[:post][:book_id])
     @posting = @book.posts.new(post_params)
     @posting.customer_id = current_customer.id
+    @posting.score = Language.get_data(post_params[:comment])
    if @posting.save
     flash[:notice] = "ハッピーエンドをレビューしました"
     redirect_to post_path(@posting)
@@ -97,6 +98,8 @@ class Public::PostsController < ApplicationController
   def update
       @posting = Post.find(params[:id])
     if @posting.update(post_params)
+      @posting.score = Language.get_data(post_params[:comment])
+      @posting.save
       flash[:notice] = "記録の編集が完了しました"
       redirect_to post_path(@posting)
     else
