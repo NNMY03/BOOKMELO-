@@ -40,9 +40,7 @@ class Public::PostsController < ApplicationController
     # {"202308"=>6, "202307"=>1}
     month_record = month_records.tally
     # 2
-    if month_record.nil?
-        month_record = "0"
-      unless month_record.keys.count < 5
+    if month_record.keys.count < 5
         # 3
         num = 5 - month_record.keys.count
         # [["202307", 1], ["202308", 6]]
@@ -59,7 +57,6 @@ class Public::PostsController < ApplicationController
           # {"202308"=>6, "202307"=>1, "202306"=>0}(１回目)
           month_record[mon] = 0
         end
-      end
     end
 
     month_record = month_record.sort_by(&:first)
