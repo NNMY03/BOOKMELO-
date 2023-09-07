@@ -1,4 +1,5 @@
 class Public::BooksController < ApplicationController
+before_action :ensure_customer, only: [:edit, :update, :destroy]
 require 'rakuten_web_service'
 
   def search

@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :ensure_customer, only: [:edit, :update, :destroy]
+
   def new
     @book = Book.find(params[:book_id])
     @posting = Post.new
@@ -41,24 +43,24 @@ class Public::PostsController < ApplicationController
     # {"202308"=>6, "202307"=>1}
     month_record = month_records.tally
     # 2
-    if month_record.keys.count < 5
-        # 3
-        num = 5 - month_record.keys.count
-        # [["202307", 1], ["202308", 6]]
-        sorted_month_record = month_record.sort_by(&:first)
-        # ["202307", 1]
-        sorted_month_record_first = sorted_month_record.first
-        # "202307"
-        month = sorted_month_record_first.first
-        # 3回まわす、nには0からindexがはじまる
-        num.times do |n|
-          n += 1
-          # "202306"(１回目)
-          mon = Date.strptime(month, "%Y%m").months_ago(n).strftime("%Y%m")
-          # {"202308"=>6, "202307"=>1, "202306"=>0}(１回目)
-          month_record[mon] = 0
-        end
-    end
+    # unless month_record.keys.count < 5
+    #     # 3
+    #     num = 5 - month_record.keys.count
+    #     # [["202307", 1], ["202308", 6]]
+    #     sorted_month_record = month_record.sort_by(&:first)
+    #     # ["202307", 1]
+    #     sorted_month_record_first = sorted_month_record.first
+    #     # "202307"
+    #     month = sorted_month_record_first.first
+    #     # 3回まわす、nには0からindexがはじまる
+    #     num.times do |n|
+    #       n += 1
+    #       # "202306"(１回目)
+    #       mon = Date.strptime(month, "%Y%m").months_ago(n).strftime("%Y%m")
+    #       # {"202308"=>6, "202307"=>1, "202306"=>0}(１回目)
+    #       month_record[mon] = 0
+    #     end
+    # end
 
     month_record = month_record.sort_by(&:first)
 
@@ -109,6 +111,12 @@ class Public::PostsController < ApplicationController
 
 
   private
+  
+  def ensure_customer
+    @posts = current_customer.posts
+    @post = @posts.find_by(id: params[:id])
+    redirect_to posts_path unless @post
+  end
 
   def post_params
     params.require(:post).permit(:reading_finish, :comment, :star, :memo, :book_id, :posted_status, :name, tag_ids:[])

@@ -1,4 +1,5 @@
 class Public::ReportsController < ApplicationController
+  before_action :ensure_customer, only: [:edit, :update, :destroy]
   
   def new
    @report = Report.new
