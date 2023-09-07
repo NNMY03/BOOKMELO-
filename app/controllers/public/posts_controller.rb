@@ -111,7 +111,7 @@ class Public::PostsController < ApplicationController
 
 
   private
-  
+
   def ensure_customer
     @posts = current_customer.posts
     @post = @posts.find_by(id: params[:id])

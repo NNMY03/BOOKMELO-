@@ -1,5 +1,6 @@
 class Public::BooksController < ApplicationController
-before_action :ensure_customer, only: [:edit, :update, :destroy]
+before_action :ensure_customer, only: [:edit, :update, :destroy, :index, :show]
+
 require 'rakuten_web_service'
 
   def search
@@ -109,4 +110,12 @@ require 'rakuten_web_service'
       publisher: publisher,
     }
   end
+
+  def ensure_customer
+   if current_customer==nil
+    flash[:notice]="ログインが必要です"
+    redirect_to top_path
+   end
+  end
+
 end

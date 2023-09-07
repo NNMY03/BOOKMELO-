@@ -19,6 +19,13 @@ class Public::ReportsController < ApplicationController
   end
 
   private
+  
+  def ensure_customer
+   if @current_customer==nil
+    flash[:notice]="ログインが必要です"
+    redirect_to top_path unless @post
+   end
+  end
 
   def report_params
     params.require(:report).permit(:reason, :customer_id, :post_id, :img_big, :author, :publisher, :item_caption)
