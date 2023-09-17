@@ -241,7 +241,6 @@ button.btn {
 }
 
 // お気に入りボタン
-
 .btn-favorite,
 a.btn-favorite  {
   font-size: 1.0rem;
@@ -334,4 +333,49 @@ a.btn-tag--ver:hover {
 /*ホバー時のデザイン*/
 .pagination>li>a:hover {        
   border-radius: 15px;    /*角を丸くする*/
+}
+
+//感情タグアコーディオンメニュー
+// アコーディオンメニューデザイン
+.accordion-container .accordion-title {
+  color: #fff;
+  background: #19b5d1;
+  cursor: pointer
+}
+// カーソルが乗ったときのデザイン
+.accordion-container .accordion-title:hover,
+.accordion-container .accordion-title:active,
+.accordion-container .content-entry.open .accordion-title {
+  background-color: #000000;
+  color: white;
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
+  transform: translateY(-5px);
+}
+// 最初は隠しておく
+.accordion-content {
+  display: none;
+}
+// トグルの位置固定
+.accordion-title{
+  position: relative;
+}
+// トグルのデザイン
+.accordion-title:after {
+  content: "";
+  position: absolute;
+  right: 25px;
+  top: 38%;
+  transition: all 0.2s ease-in-out;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-top: solid 2px #fff;
+  border-right: solid 2px #fff;
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+.accordion-title.open:after {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  top: 45%;
 }

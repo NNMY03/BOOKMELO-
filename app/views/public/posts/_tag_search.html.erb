@@ -1,15 +1,11 @@
-<table class="table table-light mt-5 table-bordered">
-  <thead>
-    <tr class="text-center genre-head">
-      感情タグから探す
-    </tr>
-  </thead>
-  <tbody>
+<div class="card accordion-container">
+  <div class="card-body accordion-title js-accordion-title">
+    感情タグから探す
+  </div>
+  <div class="card-body accordion-content">
     <% tags.each do |tag| %>
-    <tr class="mx-auto  text-center">
-      <%= link_to tag.name, books_path(tag_id: tag.id), class: "text-decoration-none text-dark rounded bg-light p-2" %>
+      <%= link_to tag.name, books_path(tag_id: tag.id) %>
       <% end %>
-      <%= link_to "＃ALL", books_path, class: "text-decoration-none text-dark rounded bg-light p-2"%>
-    </tr>
-  </tbody>
-</table>
+      <%= link_to "＃ALL", books_path %>
+  </div>
+</div>
