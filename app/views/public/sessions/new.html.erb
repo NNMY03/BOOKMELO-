@@ -1,15 +1,15 @@
 <div class="main-container d-flex justify-content-center">
-  <div class="row ">
-    <div class="col-6 py-5">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-5 px-sm-0 mx-auto pt-5 text-center">
       <h3 class="text-light">書物は我々のうちなる</br>凍った海のための斧なのだ。</h3>
-        <h6>フランツ・カフカ（現在のチェコ出身の小説家／1883－1924）</h6><br>
-          <p>BOOKMELOはハッピーエンドという物語を通して、凍えた海に天使の梯子をかけることを目的としたサイトです。</br>
+        <h6>フランツ・カフカ<br>（現在のチェコ出身の小説家／1883－1924）</h6><br>
+          <p>BOOKMELOはハッピーエンドの物語を通して、凍えた海に天使の梯子をかけることを目的としたサイトです。<br>
              あなたの心を満たす”物語”と、出会えることを願います。
           </p>
     </div>
 
-    <div class="col-6 field-group text-center py-5">
-      <h2>Log in</h2>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-sm-0 mx-auto  field-group text-center pt-5">
+      <h2>ログイン</h2>
         <%= form_with model: @customer, url: customer_session_path do |f| %>
           <div class='field'>
             <%= f.label :name, 'ユーザー名' %><br/>
