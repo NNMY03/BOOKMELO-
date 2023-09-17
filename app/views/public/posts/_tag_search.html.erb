@@ -4,8 +4,8 @@
   </div>
   <div class="card-body accordion-content">
     <% tags.each do |tag| %>
-      <%= link_to tag.name, books_path(tag_id: tag.id) %>
+      <%= link_to tag.name, books_path(tag_id: tag.id), class: "text-decoration-none text-dark rounded bg-light p-2" %>
       <% end %>
-      <%= link_to "＃ALL", books_path %>
+      <%= link_to "＃ALL", books_path, class: "text-decoration-none text-dark rounded bg-light p-2" %>
   </div>
 </div>
