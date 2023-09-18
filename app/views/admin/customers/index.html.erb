@@ -12,6 +12,7 @@
           <th>ニックネーム</th>
           <th>年齢</th>
           <th>ステータス</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -28,6 +29,7 @@
             </td>
            <td class= "<%= customer.is_deleted ? 'text-gray' : 'text-green' %>"><%= customer.is_deleted ? '退会済み' : '有効' %>
            </td>
+           <td><%=link_to "詳細", admin_customer_path(customer) %></td>
           </tr>
         <% end %>
         </tbody>

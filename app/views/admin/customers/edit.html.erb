@@ -1,2 +1,68 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="my-5"><%= @customers.name %>さんの会員情報 編集</h4>
+      <%= form_with model: @customers, url: admin_customer_path, method: :patch do |f| %>
+      <table class="table table-borderless">
+
+        <tr>
+          <td>会員ID</td>
+          <td><%= @customers.id %></td>
+        </tr>
+
+        <tr>
+          <td>氏名</td>
+          <td><%= f.text_field :name %></td>
+        </tr>
+
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= f.text_field :email %></td>
+        </tr>
+
+        <tr>
+        <td>年齢</td>
+        <td><%= f.select :age, Customer.ages.keys.map{|k| [I18n.t("enums.customer.age.#{k}"), k]}, class: "prefecture-select", include_blank: "選択して下さい" %>
+        </td>
+        </tr>
+      
+        <tr>
+        <td>性別</td>
+        <td>
+        <%= f.radio_button :gender, Customer.genders.key(0) %>
+        <%= f.label :gender, Customer.genders_i18n[:gender_male], value: Customer.genders.key(0) %>
+        <%= f.radio_button :gender, Customer.genders.key(1) %>
+        <%= f.label :gender, Customer.genders_i18n[:gender_female], value: Customer.genders.key(0) %>
+        <%= f.radio_button :gender, Customer.genders.key(2) %>
+        <%= f.label :gender, Customer.genders_i18n[:gender_normal], value: Customer.genders.key(0) %>
+        </td>
+        </tr>
+      
+        <tr>
+        <td>introduction</td>
+        <td>
+        <%= f.text_area :introduction, class: "form-control introduction" %>
+        </td>
+        </tr>
+
+        <tr>
+          <td>会員ステータス</td>
+          <td>
+            <%= f.radio_button :is_deleted, :false %>
+            <%= f.label :is_deleted, "有効", { value: :false }  %>
+
+            <%= f.radio_button :is_deleted, :true %>
+            <%= f.label :is_deleted, "退会", { value: :true } %>
+          </td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td><%= f.submit "変更を保存", class:"btn btn-success" %></td>
+        </tr>
+
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

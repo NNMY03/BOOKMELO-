@@ -11,7 +11,7 @@ class Public::CustomersController < ApplicationController
     # pluck(:comment) # Post一覧からcommentだけ抜き出す [comment1, comment2, '', '', COMMENT3]
     # compact # 空の情報を削除する
     @posts_latest3 = @posts.first(2)
-    
+
   end
 
   def edit
@@ -53,20 +53,20 @@ end
   def customer_params
     params.require(:customer).permit(:name, :email, :age, :is_deleted, :gender, :introduction, :image, :comment, :memo)
   end
-  
+
   def is_matching_login_customer
      customer = Customer.find(params[:id])
     unless customer.id == current_customer.id
       redirect_to books_path, notice: "新規登録が必要です。"
     end
   end
-  
+
   def ensure_guest_user
        @customer = Customer.find(params[:id])
     if @customer.guest_user?
        redirect_to customer_path(current_customer) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
-  
+
 
 end
