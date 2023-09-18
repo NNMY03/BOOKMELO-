@@ -1,13 +1,8 @@
 @use '~bootstrap/scss/bootstrap';
 
-// .sign_up {
-// display: contents;
-// }
-
 h1, h2, h3 {
 font-family: 'Tilt Prism', cursive;
 }
-
 
 footer{
     /*footerの装飾*/
@@ -78,6 +73,8 @@ body {
 }
 
 .filter {
+ height: 100vh;
+ width: 100%;
  position: static;
  background-color: rgba(0,0,0,0.5);
 }
@@ -379,3 +376,12 @@ a.btn-tag--ver:hover {
   transform: rotate(-45deg);
   top: 45%;
 }
+
+// /* スマホ */
+// @media (max-width: 599px) {
+//   div {
+//     width: 500px;
+//     font-size: 10px;
+//     color: red;
+//   }
+// }

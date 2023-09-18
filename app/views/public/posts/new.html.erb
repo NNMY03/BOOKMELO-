@@ -3,7 +3,7 @@
     <%= render '/layouts/errors', obj: @posting %>
   </div>
   
-  <div class="row card w-50 mx-auto mt-4 shadow-lg">
+  <div class="row card w-50 mx-auto shadow-lg">
      <table class="col-12 table table-sm py-3">
        <thead>
          <tr>
@@ -39,9 +39,9 @@
         </div>
 
         <div class="form-group">
-          <%= posting.label "感情タグ", class: "pr-5" %>
+          <%= posting.label "感情タグ", class: "pr-5" %><br>
             <%= posting.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-              <%= tag.check_box class:"form-contro5 mt-4" do %>
+              <%= tag.check_box class:"mx-2" do %>
                 <%= tag.check_box + tag.text %>
               <% end %>
              <%= tag.label {tag.text} %>
