@@ -25,9 +25,9 @@
         <%= f.radio_button :gender, Customer.genders.key(0) %>
         <%= f.label :gender, Customer.genders_i18n[:gender_male], value: Customer.genders.key(0) %>
         <%= f.radio_button :gender, Customer.genders.key(1) %>
-        <%= f.label :gender, Customer.genders_i18n[:gender_female], value: Customer.genders.key(0) %>
+        <%= f.label :gender, Customer.genders_i18n[:gender_female], value: Customer.genders.key(1) %>
         <%= f.radio_button :gender, Customer.genders.key(2) %>
-        <%= f.label :gender, Customer.genders_i18n[:gender_normal], value: Customer.genders.key(0) %>
+        <%= f.label :gender, Customer.genders_i18n[:gender_normal], value: Customer.genders.key(2) %>
       </div>
       <div class="form-group">
         <%= f.label :introduction %>

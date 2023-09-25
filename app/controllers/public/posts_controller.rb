@@ -28,14 +28,6 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = current_customer.posts.order(created_at: :desc).page(params[:page])
-    # 月別集計
-    # 本番環境のみの処理
-    # if Rails.env.production?
-    #   @month_record = @posts.group("date_format(posts.reading_finish, '%Y%m')").count #2023/03/25
-    # 開発環境のみの処理
-    # elsif Rails.env.development?
-    #   @month_record = @posts.group("strftime('%Y%m',posts.reading_finish)").count #2023/03/25
-    # end
     # [Fri, 18 Aug 2023, Sat, 19 Aug 2023, Thu, 10 Aug 2023, Fri, 18 Aug 2023, Thu, 17 Aug 2023, Wed, 16 Aug 2023]
     reading_finish = @posts.pluck(:reading_finish)
     # ["202308", "202308", "202308", "202308", "202308", "202308", "202307"]
