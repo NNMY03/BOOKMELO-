@@ -112,7 +112,7 @@ require 'rakuten_web_service'
   end
 
   def ensure_customer
-   if current_customer==nil
+   unless customer_signed_in? or admin_signed_in?
     flash[:notice]="ログインが必要です"
     redirect_to top_path
    end

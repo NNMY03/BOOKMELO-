@@ -4,7 +4,7 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
  
-  validates :name, uniqueness: true
+  validates :name, presence: true, uniqueness: true
   validates :age, presence: true
   validates :gender, presence: true
  
