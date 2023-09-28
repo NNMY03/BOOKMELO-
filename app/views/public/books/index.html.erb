@@ -11,15 +11,16 @@
     
     <% @posts.each do |post| %>
       <div class="book-box card mb-3" style="border-radius: 20px; border: 3px solid #000080;">
-        <div class="book-main d-flex">
+        <div class="book-main d-flex m-3 ">
           <div class="book-text m-2 col-5">
             <p><%= image_tag post.customer.get_profile_image(50,50), class: "name_image" %>
                <span><%= post.customer.name %></span>
-               <span><%= %></span>
+               <span><%= post.created_at.strftime('%Y/%m/%d') %></span>
              </p>
              <div>
               <%= post.book.title %>
               <%= post.book.author %>
+              <%= post.comment %>
             </div>
               <%= render "static-rate", posts: post %>
             <% post.tags.each do |f| %>
